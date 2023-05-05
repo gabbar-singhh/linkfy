@@ -1,0 +1,67 @@
+.HeaderSection {
+    color: #232323;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+
+    box-shadow: 5px 5px 39px -5px rgba(157, 157, 157, 0.49);
+    -webkit-box-shadow: 5px 5px 39px -5px rgba(157, 157, 157, 0.49);
+    -moz-box-shadow: 5px 5px 39px -5px rgba(157, 157, 157, 0.49);
+    cursor: default;
+
+    border: 2px solid rgb(237 251 255);
+    color: #232323;
+
+    background: linear-gradient(0deg,
+            rgba(244, 253, 255, 1) 0%,
+            rgba(238, 251, 255, 1) 100%);
+}
+
+.LeftSideSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.LeftSideSection .LogoTxt {
+    text-transform: uppercase;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.MiddleSideSection ul {
+    display: flex;
+    list-style-type: none;
+    gap: 1.5em;
+    font-size: 1em;
+}
+
+.MiddleSideSection ul li .ItemLi {
+    font-weight: 500;
+}
+
+.RightSideSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.RightSideSection .SignInBtn {
+    background-color: #ff7816;
+
+    color: #000;
+    color: #fff;
+
+    padding: 0.5em 1.5em;
+    border-radius: 0.2em;
+    box-shadow: 5px 5px 39px -5px rgba(157, 157, 157, 0.49);
+    text-transform: uppercase;
+}
+
+.RightSideSection .SignInBtn:hover {
+    cursor: pointer;
+    transition: all 400ms ease-in-out;
+    background-color: #ff8b37;
+}
