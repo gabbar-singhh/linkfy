@@ -18,7 +18,7 @@ const Navbar = () => {
           height={30}
           alt="linkify-logo"
         />
-        <span className={styles.LogoTxt}>Linkify</span>
+        <span className={styles.LogoTxt}>Linkfy</span>
       </div>
 
       <div className={styles.MiddleSideSection}>

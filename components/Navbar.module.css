@@ -34,7 +34,7 @@
 .MiddleSideSection ul {
     display: flex;
     list-style-type: none;
-    gap: 1.5em;
+    gap: 2em;
     font-size: 1em;
 }
 
