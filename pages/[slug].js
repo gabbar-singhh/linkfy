@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useRouter } from "next/router";
 import { db } from "@/firebase";
-import { onSnapshot, getDocs, collection, doc } from "firebase/firestore/lite";
-
-// import { collection } from "firebase/firestore/lite";
+import { getDocs, collection } from "firebase/firestore/lite";
 
 const slug = () => {
   const colRef = collection(db, "links");
