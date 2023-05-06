@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { db } from "@/firebase";
-import { doc, setDoc, collection, query } from "firebase/firestore/lite";
-
-import { getCountFromServer, Firestore } from "firebase/firestore";
+import { doc, setDoc} from "firebase/firestore/lite";
 import generateCode from "@/utility/generateCode";
 import { v4 as uuidv4 } from "uuid";
 

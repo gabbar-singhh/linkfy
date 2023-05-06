@@ -11,42 +11,32 @@ const slug = () => {
 
   const [data, setData] = useState([]);
   const router = useRouter();
-  const {par} = useParams()
+  const { slug } = router.query;
 
   useEffect(() => {
-    const code = router.query.slug;
     const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, "links"));
       const dataArray = [];
-      querySnapshot.forEach((doc) => {
-        // console.log('🍌', slug)
-        // console.log('🍎🍎', par);
-        dataArray.push({ code: doc.code, originalURL: doc.originalURL });
 
+      querySnapshot.forEach((doc) => {
         const CODE_VAL = doc.data().code;
         const FULL_URL = doc.data().originalURL;
 
-        if (!slug == CODE_VAL) {
-          console.log("Not Found⛔");
-        } else {
-          console.log("Redirecting Soon✅", par);
+        if (slug === CODE_VAL) {
+          console.log("Redirecting Soon✅", slug);
+          dataArray.push({ code: CODE_VAL, originalURL: FULL_URL });
+          window.location.replace(FULL_URL);
         }
       });
       setData(dataArray);
     };
-    fetchData();
-  }, []);
 
-  return (
-    <div>
-      {data.map((item) => (
-        <div key={item.code}>
-          {item.originalURL}
-          {""}
-        </div>
-      ))}
-    </div>
-  );
+    if (slug) {
+      fetchData();
+    }
+  }, [slug]);
+
+  return <div>{}</div>;
 };
 
 export default slug;
