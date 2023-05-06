@@ -65,3 +65,21 @@
     transition: all 400ms ease-in-out;
     background-color: #ff8b37;
 }
+
+.RightSideSection .wrapper {
+    border-color: 2px solid #ff7816;
+
+}
+
+.RightSideSection .photoURL {
+    border-radius: 50%;
+    width: 45px;
+    border: 2.5px solid #ff7816;
+    cursor: pointer;
+    box-shadow: 2px 1px 5px lightgray;
+
+}
+
+.RightSideSection .photoURL:hover {
+    transform: scale(1.05);
+}
