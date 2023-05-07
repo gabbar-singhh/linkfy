@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "@/firebase";
 import { Dropdown, Text } from "@nextui-org/react";
+import UserContext from "@/context/UserContext";
 
 const Navbar = () => {
-  const GITHUB_REPO_LINK = "https://github.com/dev-himanshu-01/linkify";
-
+  const context = useContext(UserContext);
   const [userData, setUserData] = useState({
     credential: "",
     token: "",
@@ -53,6 +53,16 @@ const Navbar = () => {
             isLoggedIn: true,
           })
         );
+
+        // user-context
+        context.setDataContext({
+          credential: credential,
+          token: token,
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          isLoggedIn: true,
+        });
       })
 
       .catch((error) => {
@@ -79,7 +89,16 @@ const Navbar = () => {
             photoURL: "",
             isLoggedIn: false,
           });
-          localStorage.removeItem("user");
+
+          localStorage.removeItem(context.email);
+          context.setDataContext({
+            credential: "",
+            token: "",
+            displayName: "",
+            email: "",
+            photoURL: "",
+            isLoggedIn: false,
+          });
           console.log("signed out succesfully");
         })
         .catch((error) => {
@@ -89,10 +108,10 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-
-    const prevSignInDetails = JSON.parse(localStorage.getItem("user"));
-    if (prevSignInDetails){
+    const prevSignInDetails = JSON.parse(localStorage.getItem(context.email));
+    if (prevSignInDetails) {
       setUserData(prevSignInDetails);
+      context.setUserData(prevSignInDetails)
     }
   }, []);
 

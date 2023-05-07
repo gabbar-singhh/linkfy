@@ -1,21 +1,28 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { db } from "@/firebase";
-import { doc, setDoc} from "firebase/firestore/lite";
+import { collection, doc, setDoc} from "firebase/firestore/lite";
 import generateCode from "@/utility/generateCode";
 import { v4 as uuidv4 } from "uuid";
+import UserContext from "@/context/UserContext";
 
 const app = () => {
   const [url, setUrl] = useState("");
+  const context = useContext(UserContext)
 
   const submitformhandler = async (e) => {
     e.preventDefault();
     const docsRandom = uuidv4();
 
-    await setDoc(doc(db, "links", docsRandom), {
+    // await 
+    console.log(context);
+    await setDoc(doc(db, context.email, docsRandom), {
       originalURL: url,
       code: generateCode(),
+      // email: context.email,
+      // displayName: context.displayName
     });
 
+    console.log('🧧',context);
     alert("This is your url - https://localhost:3000/");
   };
 

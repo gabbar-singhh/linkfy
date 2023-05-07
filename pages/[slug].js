@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { db } from "@/firebase";
 import { getDocs, collection } from "firebase/firestore/lite";
+import UserContext from "@/context/UserContext";
+import { userAgent } from "next/server";
+
 
 const slug = () => {
-  const colRef = collection(db, "links");
+  const context = useContext(UserContext)
+  const colRef = collection(db, context.email);
 
   const [data, setData] = useState([]);
   const router = useRouter();
@@ -12,7 +16,7 @@ const slug = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, "links"));
+      const querySnapshot = await getDocs(collection(db, context.email));
       const dataArray = [];
 
       querySnapshot.forEach((doc) => {
