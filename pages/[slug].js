@@ -4,15 +4,14 @@ import { db } from "@/firebase";
 import { getDocs, collection } from "firebase/firestore/lite";
 
 const slug = () => {
-  const colRef = collection(db, "links");
-
   const [data, setData] = useState([]);
   const router = useRouter();
   const { slug } = router.query;
 
   useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user"));
     const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, "links"));
+      const querySnapshot = await getDocs(collection(db, userData.email));
       const dataArray = [];
 
       querySnapshot.forEach((doc) => {
