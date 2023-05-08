@@ -1,0 +1,85 @@
+.Main {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.Main h2 {
+    display: flex;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.FullUrl {
+    margin: 0 !important;
+    font-size: 1em;
+    overflow-x: auto;
+    width: 600px;
+    padding: 1em;
+    backdrop-filter: blur(0.5px);
+    border-radius: 10px;
+    background-color: rgb(166 160 160 / 10%);
+    box-shadow: rgb(27 27 27 / 74%) 0px 8px 26px 0px;
+    color: #f5f5f5 !important;
+    word-wrap: break-word;
+}
+
+.FullUrl::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+}
+
+/* Customize the scrollbar thumb */
+.FullUrl::-webkit-scrollbar-thumb {
+    background-color: #ff6600;
+    border-radius: 10px;
+}
+
+/* Customize the scrollbar thumb on hover */
+.FullUrl::-webkit-scrollbar-thumb:hover {
+    background-color: #ff9933;
+}
+
+.ShortenedUrl {
+    color: #f5f5f5 !important;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 1em 1.5em;
+    backdrop-filter: blur(0.5px);
+    border-radius: 10px;
+    background-color: rgb(166 160 160 / 10%);
+    box-shadow: rgb(27 27 27) 0px 8px 26px 0px;
+    box-shadow: rgb(27 27 27 / 74%) 0px 8px 26px 0px;
+    cursor: pointer;
+}
+
+.ShortenedUrl:hover {
+    transition: all 400ms ease-in-out;
+    color: #ff21b2 !important;
+    font-weight: 600;
+}
+
+.Date {
+    color: #f5f5f5 !important;
+}
+
+.Table {
+    background-color: rgb(16 16 16);
+}
+
+/* TABLE.HEADER */
+.Table .ColumnHead {
+    text-align: center;
+    color: #616161;
+    font-size: 1em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans;
+    padding: 1em;
+}
+
+
+.TableBody .TableCell {
+    padding: 0;
+    background-color: red;
+    color: red;
+}

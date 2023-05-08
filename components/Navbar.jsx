@@ -3,7 +3,7 @@ import styles from "./Navbar.module.css";
 import Link from "next/link";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "@/firebase";
-import { Dropdown, Text } from "@nextui-org/react";
+import { Dropdown, Text, Avatar } from "@nextui-org/react";
 
 const Navbar = () => {
   const GITHUB_REPO_LINK = "https://github.com/dev-himanshu-01/linkify";
@@ -89,9 +89,8 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-
     const prevSignInDetails = JSON.parse(localStorage.getItem("user"));
-    if (prevSignInDetails){
+    if (prevSignInDetails) {
       setUserData(prevSignInDetails);
     }
   }, []);
@@ -101,7 +100,7 @@ const Navbar = () => {
       <div className={styles.LeftSideSection}>
         <img
           className={styles.Logo}
-          src={"/link.png"}
+          src={"/link.svg"}
           width={30}
           height={30}
           alt="linkify-logo"
@@ -138,7 +137,13 @@ const Navbar = () => {
         {userData.isLoggedIn ? (
           <Dropdown>
             <Dropdown.Trigger className={styles.wrapper}>
-              <img className={styles.photoURL} src={userData.photoURL} />
+              <Avatar
+                className={styles.Avatar}
+                src={userData.photoURL}
+                color={"error"}
+                squared
+                bordered
+              />
             </Dropdown.Trigger>
             <Dropdown.Menu
               color="primary"

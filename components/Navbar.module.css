@@ -4,31 +4,24 @@
     align-items: center;
     justify-content: space-between;
     padding: 1em;
-
-    box-shadow: 5px 5px 39px -5px rgba(157, 157, 157, 0.49);
-    -webkit-box-shadow: 5px 5px 39px -5px rgba(157, 157, 157, 0.49);
-    -moz-box-shadow: 5px 5px 39px -5px rgba(157, 157, 157, 0.49);
     cursor: default;
-
-    border: 2px solid rgb(237 251 255);
-    color: #232323;
-
-    background: linear-gradient(0deg,
-            rgba(244, 253, 255, 1) 0%,
-            rgba(238, 251, 255, 1) 100%);
+    border: none;
+    border-bottom: 1px solid #23090d;
+    background-color: #000;
+    color: #fff;
 }
 
 .LeftSideSection {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 8px;
 }
 
 .LeftSideSection .LogoTxt {
     text-transform: uppercase;
-    font-size: 1.5em;
-    font-weight: 700;
+    font-size: 1.3em;
+    font-weight: 600;
 }
 
 .MiddleSideSection ul {
@@ -48,38 +41,21 @@
     justify-content: center;
 }
 
+.RightSideSection .Avatar{
+    cursor: pointer;
+}
+
 .RightSideSection .SignInBtn {
-    background-color: #ff7816;
-
-    color: #000;
+    background-color: hsla(341, 97%, 59%, 0.75);
+    font-weight: 600;
     color: #fff;
-
     padding: 0.85em 1.5em;
     border-radius: 0.2em;
-    box-shadow: 5px 5px 39px -5px rgba(157, 157, 157, 0.49);
     text-transform: uppercase;
 }
 
 .RightSideSection .SignInBtn:hover {
     cursor: pointer;
-    transition: all 400ms ease-in-out;
-    background-color: #ff8b37;
-}
-
-.RightSideSection .wrapper {
-    border-color: 2px solid #ff7816;
-
-}
-
-.RightSideSection .photoURL {
-    border-radius: 50%;
-    width: 45px;
-    border: 2.5px solid #ff7816;
-    cursor: pointer;
-    box-shadow: 2px 1px 5px lightgray;
-
-}
-
-.RightSideSection .photoURL:hover {
-    transform: scale(1.05);
+    transition: all 600s ease-in-out;
+    background-color: hsl(341deg 100% 66.18% / 75%);
 }
