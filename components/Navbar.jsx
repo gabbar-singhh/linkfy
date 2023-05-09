@@ -53,6 +53,7 @@ const Navbar = () => {
             isLoggedIn: true,
           })
         );
+        window.location.reload()
       })
 
       .catch((error) => {
@@ -81,6 +82,7 @@ const Navbar = () => {
           });
           localStorage.removeItem("user");
           console.log("signed out succesfully");
+        window.location.reload()
         })
         .catch((error) => {
           // An error happened.
@@ -92,7 +94,7 @@ const Navbar = () => {
     const prevSignInDetails = JSON.parse(localStorage.getItem("user"));
     if (prevSignInDetails) {
       setUserData(prevSignInDetails);
-    }
+    } 
   }, []);
 
   return (

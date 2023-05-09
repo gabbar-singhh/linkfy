@@ -2,10 +2,11 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
+    cursor: default;
+    margin: 0 2em;
 }
 
 .Main h2 {
-    display: flex;
     font-size: 1.6em;
     text-transform: uppercase;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -13,32 +14,38 @@
 }
 
 .FullUrl {
+    cursor: default;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0 !important;
     font-size: 1em;
+    outline: none;
+    border: none;
     overflow-x: auto;
+    overflow-y: visible;
     width: 600px;
-    padding: 1em;
+    padding: 1em 1.5em;
     backdrop-filter: blur(0.5px);
     border-radius: 10px;
     background-color: rgb(166 160 160 / 10%);
     box-shadow: rgb(27 27 27 / 74%) 0px 8px 26px 0px;
     color: #f5f5f5 !important;
-    word-wrap: break-word;
+    resize: none;
+    white-space: nowrap;
 }
 
-.FullUrl::-webkit-scrollbar-track {
-    background-color: #f5f5f5;
+.FullUrl::-webkit-scrollbar {
+    width: 0px;
+    background-color: #3d3d3d;
 }
 
-/* Customize the scrollbar thumb */
+.FullUrl::-webkit-scrollbar-track {}
+
 .FullUrl::-webkit-scrollbar-thumb {
-    background-color: #ff6600;
-    border-radius: 10px;
-}
+    background-color: rgb(124, 124, 124);
+    border-radius: 1em;
+    outline: none;
+    border: none;
 
-/* Customize the scrollbar thumb on hover */
-.FullUrl::-webkit-scrollbar-thumb:hover {
-    background-color: #ff9933;
 }
 
 .ShortenedUrl {
@@ -82,4 +89,13 @@
     padding: 0;
     background-color: red;
     color: red;
+}
+
+/* WHEN USER IS-NOT SIGN-IN */
+.MainSection {
+    font-size: 0.7em;
+    background-color: #101010;
+    padding: 1.5em 2em;
+    text-align: left;
+    width: 100vw;
 }

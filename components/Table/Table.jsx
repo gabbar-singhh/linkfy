@@ -2,63 +2,94 @@ import { Table, Row, Col, Tooltip, Text } from "@nextui-org/react";
 import { IconButton } from "./IconButton";
 import { DeleteIcon } from "./DeleteIcon";
 import styles from "./Table.module.css";
-import { formatDistanceStrict } from "date-fns";
+import { formatDistanceToNowStrict } from "date-fns";
 import Image from "next/image";
+import { getDocs, collection } from "firebase/firestore/lite";
+import { db } from "@/firebase";
+import React, { useState, useEffect } from "react";
 
 export default function App() {
+  const [data, setData] = useState([]);
+  const [showTable, setShowTable] = useState({ user: "SIGN_OUT" });
   const columns = [
     { name: "FULL URL", uid: "full_url" },
     { name: "SHORTENED URL", uid: "shortened_url" },
     { name: "TIME", uid: "date" },
     { name: "ACTIONS", uid: "actions" },
   ];
-  const users = [
-    {
-      id: 0,
-      originalURL: "https://github.com/AshmanSodhi/akshita_ka_janamdin.git",
-      code: "JSK9S",
-      date: "2023-05-05",
-    },
-    {
-      id: 1,
-      originalURL:
-        "https://console.firebase.google.com/u/0/project/linkify-8869d/firestore/data/~2Fhimanshu01.dev@gmail.com~2F25d0561d-56c9-423a-b5cc-cd26de47ba55",
-      code: "HS8R7",
-      date: "2023-01-01",
-    },
-    {
-      id: 2,
-      originalURL: "https://web.whatsapp.com/",
-      code: "BSJFU",
-      date: "2020-09-28",
-    },
-  ];
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const fetchData = async () => {
+      const querySnapshot = await getDocs(collection(db, userData.email));
+      const dataArray = [];
+
+      if (!querySnapshot.docs == []) {
+        setShowTable({ user: "SIGN_IN_DATA" });
+        querySnapshot.forEach((doc) => {
+          const CODE_VAL = doc.data().code;
+          const FULL_URL = doc.data().originalURL;
+          const DATE = doc.data().date;
+
+          console.log(doc.data());
+
+          dataArray.push({
+            id: CODE_VAL,
+            code: CODE_VAL,
+            originalURL: FULL_URL,
+            date: DATE,
+          });
+        });
+      } else {
+        setShowTable({ user: "SIGN_OUT" });
+      }
+
+      setData(dataArray);
+    };
+
+    try {
+      if (userData.isLoggedIn) {
+        fetchData();
+      }
+    } catch {
+      setShowTable({ user: "SIGN_OUT" });
+    }
+  }, []);
 
   const renderCell = (user, columnKey) => {
     const cellValue = user[columnKey];
-    const date = new Date(user.date);
     switch (columnKey) {
       case "full_url":
-        return <Text className={styles.FullUrl}>{user.originalURL}</Text>;
+        return (
+          <textarea readOnly value={user.originalURL} resize="none" rows={1} className={styles.FullUrl}/>
+        );
 
       case "shortened_url":
         return (
-          <Col>
-            <Row>
-              <Text>{cellValue}</Text>
-            </Row>
-            <Row>
-              <Text
-                className={styles.ShortenedUrl}
-              >{`linkfy.web.app/${user.code}`}</Text>
-            </Row>
-          </Col>
+          <Tooltip content="Click to copy">
+            <Col
+              onClick={() =>
+                navigator.clipboard.writeText(`linkfy.web.app/${user.code}`)
+              }
+            >
+              <Row>
+                <Text>{cellValue}</Text>
+              </Row>
+              <Row>
+                <Text
+                  className={styles.ShortenedUrl}
+                >{`linkfy.web.app/${user.code}`}</Text>
+              </Row>
+            </Col>
+          </Tooltip>
         );
 
       case "date":
         return (
           <Text className={styles.Date}>
-            {formatDistanceStrict(date, new Date(), { addSuffix: true })}
+            {formatDistanceToNowStrict(new Date(user.date), {
+              addSuffix: true,
+            })}
           </Text>
         );
 
@@ -95,45 +126,61 @@ export default function App() {
         return cellValue;
     }
   };
-  return (
-    <>
-      <section className={styles.Main}>
-        <h2>👉 Previous Shortened Links</h2>
-        <Table
-          aria-label="Example table with custom cells"
-          selectionMode="none"
-          css={{}}
-          className={styles.Table}
-        >
-          <Table.Header columns={columns}>
-            {(column) => (
-              <Table.Column
-                className={styles.ColumnHead}
-                key={column.uid}
-                hideHeader={column.uid === "actions"}
-                align={column.uid === "actions" ? "center" : "start"}
-              >
-                {column.name}
-              </Table.Column>
-            )}
-          </Table.Header>
 
-          <Table.Body items={users} className={styles.TableBody}>
-            {(item) => (
-              <Table.Row>
-                {(columnKey) => (
-                  <Table.Cell
-                    css={{ padding: "1em 2.5em" }}
-                    className={styles.TableCell}
-                  >
-                    {renderCell(item, columnKey)}
-                  </Table.Cell>
-                )}
-              </Table.Row>
-            )}
-          </Table.Body>
-        </Table>
-      </section>
-    </>
+  return showTable.user === "SIGN_IN_DATA" ? (
+    <section className={styles.Main}>
+      <h2>👉 Previous Shortened Links</h2>
+      <Table
+        aria-label="All Shortened URLS with their Full URLS"
+        selectionMode="none"
+        className={styles.Table}
+      >
+        <Table.Header columns={columns}>
+          {(column) => (
+            <Table.Column
+              className={styles.ColumnHead}
+              key={column.uid}
+              hideHeader={column.uid === "actions"}
+              align={column.uid === "actions" ? "center" : "start"}
+            >
+              {column.name}
+            </Table.Column>
+          )}
+        </Table.Header>
+
+        <Table.Body items={data} className={styles.TableBody}>
+          {(item) => (
+            <Table.Row>
+              {(columnKey) => (
+                <Table.Cell
+                  css={{ padding: "1em 2.5em" }}
+                  className={styles.TableCell}
+                >
+                  {renderCell(item, columnKey)}
+                </Table.Cell>
+              )}
+            </Table.Row>
+          )}
+        </Table.Body>
+      </Table>
+    </section>
+  ) : (
+    <></>
   );
 }
+
+/* 
+sign in - data-hai: table ✅
+|       - data-nhi: no table 👎  
+| 
+sign in nhi hai - no table 👎
+
+
+
+
+
+SIGN_OUT : no table👎
+SIGN_IN_DATA: table ✅
+SIGN_IN_NO_DATA: no table 👎 
+
+*/

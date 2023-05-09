@@ -11,20 +11,36 @@ const slug = () => {
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user"));
     const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, userData.email));
-      const dataArray = [];
+      try {
+        const querySnapshot = await getDocs(collection(db, userData.email));
 
-      querySnapshot.forEach((doc) => {
-        const CODE_VAL = doc.data().code;
-        const FULL_URL = doc.data().originalURL;
+        const dataArray = [];
+        querySnapshot.forEach((doc) => {
+          const CODE_VAL = doc.data().code;
+          const FULL_URL = doc.data().originalURL;
 
-        if (slug === CODE_VAL) {
-          console.log("Redirecting Soon✅", slug);
-          dataArray.push({ code: CODE_VAL, originalURL: FULL_URL });
-          window.location.replace(FULL_URL);
-        }
-      });
-      setData(dataArray);
+          if (slug === CODE_VAL) {
+            console.log("Redirecting Soon✅", slug);
+            dataArray.push({ code: CODE_VAL, originalURL: FULL_URL });
+            window.location.replace(FULL_URL);
+          }
+        });
+        setData(dataArray);
+      } catch {
+        const querySnapshot = await getDocs(collection(db, "other-links"));
+        const dataArray = [];
+        querySnapshot.forEach((doc) => {
+          const CODE_VAL = doc.data().code;
+          const FULL_URL = doc.data().originalURL;
+
+          if (slug === CODE_VAL) {
+            console.log("Redirecting Soon✅", slug);
+            dataArray.push({ code: CODE_VAL, originalURL: FULL_URL });
+            window.location.replace(FULL_URL);
+          }
+        });
+        setData(dataArray);
+      }
     };
 
     if (slug) {
