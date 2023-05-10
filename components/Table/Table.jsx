@@ -4,7 +4,7 @@ import { DeleteIcon } from "./DeleteIcon";
 import styles from "./Table.module.css";
 import { formatDistanceToNowStrict } from "date-fns";
 import Image from "next/image";
-import { getDocs,} from "firebase/firestore/lite";
+import { getDocs } from "firebase/firestore/lite";
 import { doc, onSnapshot, collection, getFirestore } from "firebase/firestore";
 import { db } from "@/firebase";
 import React, { useState, useEffect } from "react";
@@ -25,13 +25,14 @@ export default function App() {
 
     const fetchData = async () => {
       const dataArray = [];
+      dataArray.push([]);
       const dbm = getFirestore();
       const collectionRef = collection(dbm, `${userData.email}`);
 
       const data = onSnapshot(collectionRef, (snapshot) => {
-        console.log("😹💋", snapshot.docs);
+        console.log("🔒🔒", snapshot.docs);
+
         snapshot.forEach((doc) => {
-          // console.log(doc.data())
           if (snapshot.size === 0) {
             setShowTable({ user: "NOTSHOW" });
           } else {
@@ -39,37 +40,15 @@ export default function App() {
             const CODE_VAL = doc.data().code;
             const FULL_URL = doc.data().originalURL;
             const DATE = doc.data().date;
+            const ID = doc.data().id;
 
-            console.log("🔫", doc.data());
-            console.log("⭕");
-            // dataArray.push(doc.data())
+            dataArray.push(doc.data());
 
-            dataArray.push({
-                    id: CODE_VAL,
-                    code: CODE_VAL,
-                    originalURL: FULL_URL,
-                    date: DATE,
-                  });
-
-            console.log("🎮", data);
-
-            // dataArray.forEach((prevData) => {
-            //   if (!prevData.code === CODE_VAL) {
-            //     dataArray.push({
-            //       id: CODE_VAL,
-            //       code: CODE_VAL,
-            //       originalURL: FULL_URL,
-            //       date: DATE,
-            //     });
-            //   }
-            // });
+            console.log("🎮", dataArray);
           }
         });
-        // setData(dataArray.push(snapshot.docs))
-        setData(dataArray);
       });
-      // setData([])
-      // dataArray.push({})
+      setData(dataArray);
     };
 
     try {
@@ -173,9 +152,10 @@ export default function App() {
 
         <Table.Body items={data} className={styles.TableBody}>
           {(item) => (
-            <Table.Row textValue="">
+            <Table.Row textValue="" key={item.uid}>
               {(columnKey) => (
                 <Table.Cell
+                  // key={item}
                   css={{ padding: "1em 2.5em" }}
                   className={styles.TableCell}
                 >
