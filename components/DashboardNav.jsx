@@ -9,7 +9,7 @@ const DashboardNav = () => {
   const [userData, setUserData] = useState({
     credential: "",
     token: "",
-    displayName: "user",
+    displayName: "",
     email: "",
     photoURL: "",
     isLoggedIn: false,
@@ -73,7 +73,7 @@ const DashboardNav = () => {
           setUserData({
             credential: "",
             token: "",
-            displayName: "user",
+            displayName: "",
             email: "",
             photoURL: "",
             isLoggedIn: false,

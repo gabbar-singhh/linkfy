@@ -103,27 +103,19 @@ export default function App() {
         return (
           <Row justify="space-between" gap="0.5" align="center">
             <Col>
-              <Tooltip content="QR-Code">
-                <IconButton onClick={() => console.log("View user", user.id)}>
-                  <Image
-                    src={"/qr.svg"}
-                    width={20}
-                    height={20}
-                    alt="rq-code-icon"
-                  />
-                </IconButton>
-              </Tooltip>
+              <IconButton onClick={() => console.log("View user", user.id)}>
+                <Image
+                  src={"/qr.svg"}
+                  width={20}
+                  height={20}
+                  alt="rq-code-icon"
+                />
+              </IconButton>
             </Col>
             <Col>
-              <Tooltip
-                content="Delete"
-                color="error"
-                onClick={() => console.log("Delete user", user.id)}
-              >
-                <IconButton>
-                  <DeleteIcon size={20} fill="#FF0080" />
-                </IconButton>
-              </Tooltip>
+              <IconButton onClick={() => console.log("Delete user", user.id)}>
+                <DeleteIcon size={20} fill="#FF0080" />
+              </IconButton>
             </Col>
           </Row>
         );
