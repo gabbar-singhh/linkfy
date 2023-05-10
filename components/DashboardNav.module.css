@@ -48,3 +48,35 @@
     transition: all 600s ease-in-out;
     background-color: hsl(341deg 100% 66.18% / 75%);
 }
+
+/* 
+
+const fetchData = async () => {
+      const collectionRef = collection(db, userData.email);
+
+      const unsubscribe = onSnapshot(collectionRef, (snapshot) => {
+        const dataArray = [];
+
+        if (snapshot.size === 0) {
+          setShowTable({ user: "NOTSHOW" });
+        } else {
+          setShowTable({ user: "SHOW" });
+          snapshot.forEach((doc) => {
+            const CODE_VAL = doc.data().code;
+            const FULL_URL = doc.data().originalURL;
+            const DATE = doc.data().date;
+
+            dataArray.push({
+              id: CODE_VAL,
+              code: CODE_VAL,
+              originalURL: FULL_URL,
+              date: DATE,
+            });
+          });
+        }
+
+        setData(dataArray);
+      });
+    };
+
+*/

@@ -4,9 +4,11 @@ import { DeleteIcon } from "./DeleteIcon";
 import styles from "./Table.module.css";
 import { formatDistanceToNowStrict } from "date-fns";
 import Image from "next/image";
-import { getDocs, collection, query } from "firebase/firestore/lite";
+import { getDocs,} from "firebase/firestore/lite";
+import { doc, onSnapshot, collection, getFirestore } from "firebase/firestore";
 import { db } from "@/firebase";
 import React, { useState, useEffect } from "react";
+import filterUniqueByCode from "@/utility/removeDuplicates";
 
 export default function App() {
   const [data, setData] = useState([]);
@@ -20,31 +22,54 @@ export default function App() {
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user"));
+
     const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, userData.email));
       const dataArray = [];
+      const dbm = getFirestore();
+      const collectionRef = collection(dbm, `${userData.email}`);
 
-      // console.log("💨", typeof querySnapshot, querySnapshot.docs.length);
+      const data = onSnapshot(collectionRef, (snapshot) => {
+        console.log("😹💋", snapshot.docs);
+        snapshot.forEach((doc) => {
+          // console.log(doc.data())
+          if (snapshot.size === 0) {
+            setShowTable({ user: "NOTSHOW" });
+          } else {
+            setShowTable({ user: "SHOW" });
+            const CODE_VAL = doc.data().code;
+            const FULL_URL = doc.data().originalURL;
+            const DATE = doc.data().date;
 
-      if (querySnapshot.docs.length === 0) {
-        setShowTable({ user: "NOTSHOW" });
-      } else {
-        setShowTable({ user: "SHOW" });
-        querySnapshot.forEach((doc) => {
-          const CODE_VAL = doc.data().code;
-          const FULL_URL = doc.data().originalURL;
-          const DATE = doc.data().date;
+            console.log("🔫", doc.data());
+            console.log("⭕");
+            // dataArray.push(doc.data())
 
-          dataArray.push({
-            id: CODE_VAL,
-            code: CODE_VAL,
-            originalURL: FULL_URL,
-            date: DATE,
-          });
+            dataArray.push({
+                    id: CODE_VAL,
+                    code: CODE_VAL,
+                    originalURL: FULL_URL,
+                    date: DATE,
+                  });
+
+            console.log("🎮", data);
+
+            // dataArray.forEach((prevData) => {
+            //   if (!prevData.code === CODE_VAL) {
+            //     dataArray.push({
+            //       id: CODE_VAL,
+            //       code: CODE_VAL,
+            //       originalURL: FULL_URL,
+            //       date: DATE,
+            //     });
+            //   }
+            // });
+          }
         });
-      }
-
-      setData(dataArray);
+        // setData(dataArray.push(snapshot.docs))
+        setData(dataArray);
+      });
+      // setData([])
+      // dataArray.push({})
     };
 
     try {

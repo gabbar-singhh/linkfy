@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "@/styles/App.module.css";
 import { db } from "@/firebase";
 import { doc, setDoc } from "firebase/firestore/lite";
+import { collection, onSnapshot, getFirestore } from "firebase/firestore";
 import generateCode from "@/utility/generateCode";
 import { v4 as uuidv4 } from "uuid";
 import { Tooltip, Loading } from "@nextui-org/react";
@@ -25,19 +26,31 @@ const app = () => {
     const userData = JSON.parse(localStorage.getItem("user"));
     const CODE = generateCode();
 
+    const dbm = getFirestore();
+
+    // console.log("🗡", userCollectionSize());
+
     setShowLoading(true);
 
     try {
-      await setDoc(doc(db, userData.email, docsRandom), {
-        originalURL: url,
-        code: CODE,
-        date: dateFormat(timestamp, "isoDateTime"),
+      const collectionRef = collection(dbm, `${userData.email}`);
+      onSnapshot(collectionRef, (snapshot) => {
+        setDoc(doc(db, userData.email, docsRandom), {
+          id: snapshot.size,
+          originalURL: url,
+          code: CODE,
+          date: dateFormat(timestamp, "isoDateTime"),
+        });
       });
     } catch {
-      await setDoc(doc(db, "other-links", docsRandom), {
-        originalURL: url,
-        code: CODE,
-        date: dateFormat(timestamp, "isoDateTime"),
+      const collectionRef = collection(dbm, `other-links`);
+      onSnapshot(collectionRef, (snapshot) => {
+        setDoc(doc(db, "other-links", docsRandom), {
+          id: snapshot.size,
+          originalURL: url,
+          code: CODE,
+          date: dateFormat(timestamp, "isoDateTime"),
+        });
       });
     }
 
