@@ -4,13 +4,13 @@ import { DeleteIcon } from "./DeleteIcon";
 import styles from "./Table.module.css";
 import { formatDistanceToNowStrict } from "date-fns";
 import Image from "next/image";
-import { getDocs, collection } from "firebase/firestore/lite";
+import { getDocs, collection, query } from "firebase/firestore/lite";
 import { db } from "@/firebase";
 import React, { useState, useEffect } from "react";
 
 export default function App() {
   const [data, setData] = useState([]);
-  const [showTable, setShowTable] = useState({ user: "SIGN_OUT" });
+  const [showTable, setShowTable] = useState({ user: "NOTSHOW" });
   const columns = [
     { name: "FULL URL", uid: "full_url" },
     { name: "SHORTENED URL", uid: "shortened_url" },
@@ -24,14 +24,16 @@ export default function App() {
       const querySnapshot = await getDocs(collection(db, userData.email));
       const dataArray = [];
 
-      if (!querySnapshot.docs == []) {
-        setShowTable({ user: "SIGN_IN_DATA" });
+      console.log("💨", typeof querySnapshot, querySnapshot.docs.length);
+
+      if (querySnapshot.docs.length === 0) {
+        setShowTable({ user: "NOTSHOW" });
+      } else {
+        setShowTable({ user: "SHOW" });
         querySnapshot.forEach((doc) => {
           const CODE_VAL = doc.data().code;
           const FULL_URL = doc.data().originalURL;
           const DATE = doc.data().date;
-
-          console.log(doc.data());
 
           dataArray.push({
             id: CODE_VAL,
@@ -40,8 +42,6 @@ export default function App() {
             date: DATE,
           });
         });
-      } else {
-        setShowTable({ user: "SIGN_OUT" });
       }
 
       setData(dataArray);
@@ -52,7 +52,7 @@ export default function App() {
         fetchData();
       }
     } catch {
-      setShowTable({ user: "SIGN_OUT" });
+      setShowTable({ user: "NOTSHOW" });
     }
   }, []);
 
@@ -61,7 +61,13 @@ export default function App() {
     switch (columnKey) {
       case "full_url":
         return (
-          <textarea readOnly value={user.originalURL} resize="none" rows={1} className={styles.FullUrl}/>
+          <textarea
+            readOnly
+            value={user.originalURL}
+            resize="none"
+            rows={1}
+            className={styles.FullUrl}
+          />
         );
 
       case "shortened_url":
@@ -127,7 +133,7 @@ export default function App() {
     }
   };
 
-  return showTable.user === "SIGN_IN_DATA" ? (
+  return showTable.user === "SHOW" ? (
     <section className={styles.Main}>
       <h2>👉 Previous Shortened Links</h2>
       <Table
@@ -150,7 +156,7 @@ export default function App() {
 
         <Table.Body items={data} className={styles.TableBody}>
           {(item) => (
-            <Table.Row>
+            <Table.Row textValue="">
               {(columnKey) => (
                 <Table.Cell
                   css={{ padding: "1em 2.5em" }}
