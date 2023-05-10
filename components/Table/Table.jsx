@@ -24,7 +24,7 @@ export default function App() {
       const querySnapshot = await getDocs(collection(db, userData.email));
       const dataArray = [];
 
-      console.log("💨", typeof querySnapshot, querySnapshot.docs.length);
+      // console.log("💨", typeof querySnapshot, querySnapshot.docs.length);
 
       if (querySnapshot.docs.length === 0) {
         setShowTable({ user: "NOTSHOW" });
@@ -174,19 +174,3 @@ export default function App() {
     <></>
   );
 }
-
-/* 
-sign in - data-hai: table ✅
-|       - data-nhi: no table 👎  
-| 
-sign in nhi hai - no table 👎
-
-
-
-
-
-SIGN_OUT : no table👎
-SIGN_IN_DATA: table ✅
-SIGN_IN_NO_DATA: no table 👎 
-
-*/

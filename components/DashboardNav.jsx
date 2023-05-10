@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Navbar.module.css";
+import styles from "./DashboardNav.module.css";
 import Link from "next/link";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "@/firebase";
 import { Dropdown, Text, Avatar } from "@nextui-org/react";
 
-const Navbar = () => {
-  const GITHUB_REPO_LINK = "https://github.com/dev-himanshu-01/linkify";
-
+const DashboardNav = () => {
   const [userData, setUserData] = useState({
     credential: "",
     token: "",
-    displayName: "",
+    displayName: "user",
     email: "",
     photoURL: "",
     isLoggedIn: false,
@@ -75,7 +73,7 @@ const Navbar = () => {
           setUserData({
             credential: "",
             token: "",
-            displayName: "",
+            displayName: "user",
             email: "",
             photoURL: "",
             isLoggedIn: false,
@@ -100,39 +98,9 @@ const Navbar = () => {
   return (
     <section className={styles.HeaderSection}>
       <div className={styles.LeftSideSection}>
-        <img
-          className={styles.Logo}
-          src={"/link.svg"}
-          width={30}
-          height={30}
-          alt="linkify-logo"
-        />
-        <span className={styles.LogoTxt}>Linkfy</span>
-      </div>
-
-      <div className={styles.MiddleSideSection}>
-        <ul>
-          <li>
-            <Link className={`${styles.ItemLi} highlightEff`} href="/">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link className={`${styles.ItemLi} highlightEff`} href="/app">
-              Try Now
-            </Link>
-          </li>
-          <li>
-            <Link className={`${styles.ItemLi} highlightEff`} href={"/about"}>
-              About
-            </Link>
-          </li>
-          <li>
-            <Link className={`${styles.ItemLi} highlightEff`} href={"/"}>
-              Contact Us
-            </Link>
-          </li>
-        </ul>
+        <span className={styles.LogoTxt}>
+          {`👋 hello ${userData.displayName}`}
+        </span>
       </div>
 
       <div className={styles.RightSideSection}>
@@ -184,4 +152,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default DashboardNav;

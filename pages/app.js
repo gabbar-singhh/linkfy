@@ -8,6 +8,7 @@ import { Tooltip, Loading } from "@nextui-org/react";
 import Image from "next/image";
 import Table from "@/components/Table/Table";
 import dateFormat from "dateformat";
+import DashboardNav from "@/components/DashboardNav";
 
 const app = () => {
   const [url, setUrl] = useState("");
@@ -32,8 +33,6 @@ const app = () => {
         code: CODE,
         date: dateFormat(timestamp, "isoDateTime"),
       });
-
-      // console.log('⌚', typeof timestamp, timestamp)
     } catch {
       await setDoc(doc(db, "other-links", docsRandom), {
         originalURL: url,
@@ -60,6 +59,7 @@ const app = () => {
 
   return (
     <>
+      <DashboardNav />
       <section className={styles.Main}>
         <form action="" onSubmit={submitformhandler} className={styles.Form}>
           <input
