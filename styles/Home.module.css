@@ -1,3 +1,24 @@
-.main {
-  
+/* HERO-SECTION */
+.Herosection {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 80vh;
+}
+
+.Herosection .LeftsideSection .Heading {
+    font-weight: 700;
+    font-size: 5em;
+}
+
+.Herosection .LeftsideSection .Desc {
+    font-size: 1.5em;
+}
+
+/* INTRO-SECTION */
+.Introsection {
+    height: 120vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
