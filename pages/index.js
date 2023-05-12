@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -38,19 +39,73 @@ export default function Home() {
 
       <introsection className={styles.Introsection}>
         <div className={styles.LeftsideSection}>
-          <Image
-            src="/link-cut.jpg"
-            width={200}
-            height={200}
-            alt="link is shortening by a scissor"
-          />
+          <div className={styles.img_1}>
+            <span>Without Linkfy 😞❌</span>
+            <img
+              src="/chat_without.png"
+              width={230}
+              height={400}
+              alt="chat between a boss & empolye"
+            />
+          </div>
+          <div className={styles.img_2}>
+            <span>With Linkfy 😊✅</span>
+            <img
+              src="/chat_with.png"
+              width={230}
+              height={400}
+              alt="chat between a boss & empolye"
+            />
+          </div>
         </div>
         <div className={styles.RightsideSection}>
-          Are you tired of sharing long, messy URLs that are difficult to read
-          and remember? Say hello to Linkfy - the app that lets you shorten your
-          URLs for clean and easy sharing.
+          <div className={styles.Text}>
+            <span>Long, messy URLs tiring to read and remember?</span>
+            <span>Shorten with Linkfy!</span>
+          </div>
+          <div className={styles.Button}>
+            <Link href="/app" className={`${styles.TryNowBtn} shineEff`}>
+              <span>TRY NOW</span>
+            </Link>
+          </div>
         </div>
       </introsection>
+
+      <working className={styles.Working}>
+        <ul className={styles.BenefitList}>
+          <h2>WHY LINKFY?</h2>
+          <li>👉 Shorten any URL with just a click</li>
+          <li>👉 Clean, Easy and Fast experience</li>
+          <li>👉 Improve SEO by using clean and concise links</li>
+        </ul>
+        <img
+          src="/linkfy-video.gif"
+          alt="working video"
+          height="350"
+          width="auto"
+        />
+      </working>
+
+      <developer className={styles.Developer}>
+        <h2 className={styles.DevTxt}>
+          FOLLOW YOUR DEV!
+        </h2>
+        <div className={styles.Img}>
+          <img
+            src="https://avatars.githubusercontent.com/u/110885026?v=4"
+            width={250}
+            height={250}
+            alt=""
+          />
+        </div>
+        <div className={styles.SelfPrormo}>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus animi
+          similique error eveniet quisquam nulla a ducimus!
+        </div>
+        <div className={styles.Button}>
+          <span>Follow!</span>
+        </div>
+      </developer>
     </>
   );
 }
