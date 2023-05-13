@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 85vh;
+    margin: 12em auto;
 }
 
 .Herosection .LeftsideSection .Heading {
@@ -21,9 +21,8 @@
     align-items: center;
     justify-content: space-around;
     background-color: #fff;
-    padding: 4em;
+    padding: 11em 0;
     width: 100%;
-    height: 95vh;
 }
 
 .Introsection .LeftsideSection {
@@ -63,9 +62,9 @@
     flex-direction: column;
 }
 
-.Introsection .RightsideSection .TryNowBtn {
+.Introsection .RightsideSection .Button .TryNowBtn {
     display: inline-block;
-    background-color: hsla(341, 97%, 59%, 0.75);
+    background-color: hsl(341deg 97% 59% / 98%);
     font-size: 0.8em;
     font-weight: 600;
     color: #fff;
@@ -74,17 +73,17 @@
     text-transform: uppercase;
 }
 
-.Introsection .RightSideSection .TryNowBtn:hover {
+.Introsection .RightSideSection .Button .TryNowBtn:hover {
     cursor: pointer;
     transition: all 600s ease-in-out;
-    background-color: hsl(341deg 100% 66.18% / 75%);
+    background-color: hsl(341deg 97% 59% / 77%);
 }
 
 .Working {
-    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    padding: 15em 0;
 }
 
 .Working .BenefitList {
@@ -98,7 +97,6 @@
 
 /* DEV SECTION */
 .Developer {
-    height: 90vh;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -106,9 +104,49 @@
     align-items: center;
     gap: 3em;
     color: #232323;
+    padding: 8em 0;
 }
 
-.Developer .Img img{
-    border-radius: 50%;
-    border: 0.4em solid rgb(29, 155, 240);
+.Developer .SelfPromo {
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.Developer .Button {
+    display: flex;
+    gap: 2em;
+}
+
+.Developer .Button .TwitterBtn,
+.Developer .Button .InstaBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #fff;
+    padding: 1.5em 2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 0.2em;
+}
+
+.Developer .Button .TwitterBtn {
+    background-color: #1D9BF0;
+}
+
+.Developer .Button .InstaBtn {
+    background-color: #E1306C;
+}
+
+.Developer .Button .TwitterBtn:hover {
+    transition: all 600ms ease-in-out;
+    background-color: #1d9bf0c4;
+}
+
+.Developer .Button .InstaBtn:hover {
+    transition: all 600ms ease-in-out;
+    background-color: #e1306cad;
 }

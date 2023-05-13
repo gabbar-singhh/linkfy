@@ -5,6 +5,17 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+  const GITHUB_PROFILE_PIC =
+    "https://avatars.githubusercontent.com/u/110885026?v=4";
+
+  const openTwitter = () => {
+    window.open("https://twitter.com/garadiya0", "_target");
+  };
+
+  const openInsta = () => {
+    window.open("https://www.instagram.com/codexhimanshu/", "_target");
+  };
+
   return (
     <>
       <Head>
@@ -87,23 +98,26 @@ export default function Home() {
       </working>
 
       <developer className={styles.Developer}>
-        <h2 className={styles.DevTxt}>
-          FOLLOW YOUR DEV!
-        </h2>
-        <div className={styles.Img}>
-          <img
-            src="https://avatars.githubusercontent.com/u/110885026?v=4"
-            width={250}
-            height={250}
-            alt=""
-          />
+        <h2 className={styles.DevTxt}>FOLLOW YOUR DEV!</h2>
+        <div className={styles.ImgBox}>
+          <img src={'/profile-pic.png'} width={250} height={250} alt="" />
         </div>
-        <div className={styles.SelfPrormo}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus animi
-          similique error eveniet quisquam nulla a ducimus!
+        <div className={styles.SelfPromo}>
+          17 y/o — Self Taught Web Developer and Designer 👨‍💻
         </div>
         <div className={styles.Button}>
-          <span>Follow!</span>
+          <div
+            className={styles.TwitterBtn}
+            name="TwitterBtn"
+            onClick={openTwitter}
+          >
+            <span>Follow me on twitter! </span>
+            <img src="/twitter-icon.svg" alt="twitter-icon" height={35} />
+          </div>
+          <div className={styles.InstaBtn} name="InstaBtn" onClick={openInsta}>
+            <span>Follow me on insta! </span>
+            <img src="/instagram-icon.svg" alt="insta-icon" height={35} />
+          </div>
         </div>
       </developer>
     </>
