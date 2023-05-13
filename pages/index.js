@@ -76,7 +76,7 @@ export default function Home() {
           </div>
           <div className={styles.Button}>
             <Link href="/app" className={`${styles.TryNowBtn} shineEff`}>
-              <span>TRY NOW</span>
+              <span>TRY NOW! ⚡</span>
             </Link>
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function Home() {
       <developer className={styles.Developer}>
         <h2 className={styles.DevTxt}>FOLLOW YOUR DEV!</h2>
         <div className={styles.ImgBox}>
-          <img src={'/profile-pic.png'} width={250} height={250} alt="" />
+          <img src={"/profile-pic.png"} width={250} height={250} alt="" />
         </div>
         <div className={styles.SelfPromo}>
           17 y/o — Self Taught Web Developer and Designer 👨‍💻
@@ -120,6 +120,11 @@ export default function Home() {
           </div>
         </div>
       </developer>
+
+      <footer className={styles.Footer}>
+        MADE WITH <img src="/heart.svg" height={17} alt="heart-icon" /> BY
+        HIMANSHU
+      </footer>
     </>
   );
 }
