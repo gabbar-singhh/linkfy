@@ -34,7 +34,7 @@ const app = () => {
       const collectionRef = collection(dbm, `${userData.email}`);
       const accColRef = collection(dbm, "accumulated-data");
       onSnapshot(accColRef, (snapshot) => {
-        setDoc(doc(db, userData.email, docsRandom), {
+        setDoc(doc(db, userData.email, CODE), {
           id: snapshot.size,
           originalURL: url,
           code: CODE,

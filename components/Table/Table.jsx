@@ -3,18 +3,30 @@ import { formatDistanceToNowStrict } from "date-fns";
 import Image from "next/image";
 import { db } from "@/firebase";
 import React, { useState, useEffect } from "react";
-import { doc, onSnapshot, collection, getFirestore } from "firebase/firestore";
-import { Table, Text, Col, Row } from "@nextui-org/react";
+import {
+  doc,
+  onSnapshot,
+  collection,
+  getFirestore,
+  query,
+  where,
+  getDocs,
+  deleteDoc,
+  QuerySnapshot,
+} from "firebase/firestore";
+import { Table, Text, Col, Row, Tooltip } from "@nextui-org/react";
 import { DeleteIcon } from "./DeleteIcon";
 import { IconButton } from "./IconButton";
 
 export default function App() {
   const [data, setData] = useState([]);
-  const [lundmera, setLundmera] = useState(["cutiya", "gandu", "bhsdk"]);
   const [showTable, setShowTable] = useState({ user: "NOTSHOW" });
+  const [localStorageData, setLocalStorageData] = useState();
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user"));
+
+    setLocalStorageData(userData);
     // const dataArray = [];
 
     const fetchData = async () => {
@@ -49,73 +61,6 @@ export default function App() {
       setShowTable({ user: "NOTSHOW" });
     }
   }, []);
-
-  const renderCell = (user, columnKey) => {
-    const cellValue = user[columnKey];
-    switch (columnKey) {
-      case "full_url":
-        return (
-          <textarea
-            readOnly
-            value={user.originalURL}
-            resize="none"
-            rows={1}
-            className={styles.FullUrl}
-          />
-        );
-
-      case "shortened_url":
-        return (
-          <Col
-            onClick={() =>
-              navigator.clipboard.writeText(`linkfy.web.app/${user.code}`)
-            }
-          >
-            <Row>
-              <Text>{cellValue}</Text>
-            </Row>
-            <Row>
-              <Text
-                className={styles.ShortenedUrl}
-              >{`linkfy.web.app/${user.code}`}</Text>
-            </Row>
-          </Col>
-        );
-
-      case "date":
-        return (
-          <Text className={styles.Date}>
-            {formatDistanceToNowStrict(new Date(user.date), {
-              addSuffix: true,
-            })}
-          </Text>
-        );
-
-      case "actions":
-        return (
-          <Row justify="space-between" gap="0.5" align="center">
-            <Col>
-              <IconButton onClick={() => console.log("View user", user.id)}>
-                <Image
-                  src={"/qr.svg"}
-                  width={20}
-                  height={20}
-                  alt="rq-code-icon"
-                />
-              </IconButton>
-            </Col>
-            <Col>
-              <IconButton onClick={() => console.log("Delete user", user.id)}>
-                <DeleteIcon size={20} fill="#FF0080" />
-              </IconButton>
-            </Col>
-          </Row>
-        );
-
-      default:
-        return cellValue;
-    }
-  };
 
   return showTable.user === "SHOW" ? (
     <section className={styles.Main}>
@@ -170,20 +115,24 @@ export default function App() {
                 css={{ padding: "1em 2.5em" }}
                 className={styles.TableCell}
               >
-                <Col
-                  onClick={() =>
-                    navigator.clipboard.writeText(`linkfy.web.app/${item.code}`)
-                  }
-                >
-                  <Row>
-                    <Text>{"cellValue"}</Text>
-                  </Row>
-                  <Row>
-                    <Text
-                      className={styles.ShortenedUrl}
-                    >{`linkfy.web.app/${item.code}`}</Text>
-                  </Row>
-                </Col>
+                <Tooltip content="click to copy">
+                  <Col
+                    onClick={() =>
+                      navigator.clipboard.writeText(
+                        `linkfy.web.app/${item.code}`
+                      )
+                    }
+                  >
+                    <Row>
+                      <Text>{""}</Text>
+                    </Row>
+                    <Row>
+                      <Text
+                        className={styles.ShortenedUrl}
+                      >{`linkfy.web.app/${item.code}`}</Text>
+                    </Row>
+                  </Col>
+                </Tooltip>
               </Table.Cell>
 
               <Table.Cell
@@ -199,13 +148,14 @@ export default function App() {
               </Table.Cell>
 
               <Table.Cell
-                key={item.id}
+                key={item.Code}
                 css={{ padding: "1em 2.5em" }}
                 className={styles.TableCell}
               >
                 <Row justify="space-between" gap="0.5" align="center">
                   <Col>
                     <IconButton
+                      key={item.code}
                       onClick={() => console.log("View user", item.id)}
                     >
                       <Image
@@ -218,7 +168,26 @@ export default function App() {
                   </Col>
                   <Col>
                     <IconButton
-                      onClick={() => console.log("Delete user", item.id)}
+                      onClick={() => {
+                        const dbm = getFirestore();
+
+                        const docRef = doc(
+                          dbm,
+                          localStorageData.email,
+                          item.code
+                        );
+
+                        deleteDoc(docRef)
+                          .then(() => {
+                            console.log(
+                              "Document successfully deleted!",
+                              item.code
+                            );
+                          })
+                          .catch(() => {
+                            console.log(" 🧨🧨🧨 ");
+                          });
+                      }}
                     >
                       <DeleteIcon size={20} fill="#FF0080" />
                     </IconButton>
