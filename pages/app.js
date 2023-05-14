@@ -63,7 +63,7 @@ const app = () => {
 
   // CLICK-TO-COPY
   const copyToClipboardBtnHandler = () => {
-    navigator.clipboard.writeText(`localhost:3000/${linkTxtCode}`);
+    navigator.clipboard.writeText(`linkfy.vercel.app/${linkTxtCode}`);
   };
 
   useEffect(() => {
@@ -110,7 +110,7 @@ const app = () => {
 
         <div className={styles.ShotenedLink}>
           <span className={styles.LinkTxt}>
-            linkfy.web.app/ <span>{linkTxtCode}</span>
+            linkfy.vercel.app/ <span>{linkTxtCode}</span>
           </span>
 
           <span
