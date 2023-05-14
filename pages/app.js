@@ -120,7 +120,7 @@ const app = () => {
               onClick={() => setClipboardVal("Link Copied!")}
             >
               <Image
-                src="/copy-icon.png"
+                src="/copy-icon.webp"
                 alt="copy-img"
                 width={35}
                 height={35}

@@ -57,7 +57,7 @@ body {
   background-color: #fff;
   height: 100vh;
   backdrop-filter: blur(12px);
-  background-image: url(/bg.jpg);
+  background-image: url(/bg.webp);
   background-repeat: no-repeat;
   background-size: auto;
 }

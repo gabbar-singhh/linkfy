@@ -142,6 +142,7 @@ const Navbar = () => {
               <Avatar
                 className={styles.Avatar}
                 src={userData.photoURL}
+                alt="user-photo"
                 color={"error"}
                 squared
                 bordered
