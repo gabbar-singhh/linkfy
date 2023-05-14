@@ -70,7 +70,7 @@ const app = () => {
   useEffect(() => {
     try {
       const userData = JSON.parse(localStorage.getItem("users"));
-    } catch {}
+    } catch { }
   }, []);
 
   return (

@@ -8,11 +8,7 @@ import {
   onSnapshot,
   collection,
   getFirestore,
-  query,
-  where,
-  getDocs,
   deleteDoc,
-  QuerySnapshot,
 } from "firebase/firestore";
 import { Table, Text, Col, Row, Tooltip } from "@nextui-org/react";
 import { DeleteIcon } from "./DeleteIcon";
@@ -21,43 +17,34 @@ import { IconButton } from "./IconButton";
 export default function App() {
   const [data, setData] = useState([]);
   const [showTable, setShowTable] = useState({ user: "NOTSHOW" });
-  const [localStorageData, setLocalStorageData] = useState();
+
+  const fetchData = async () => {
+    setData([]);
+    const userData = JSON.parse(localStorage.getItem("user"));
+    const dbm = getFirestore();
+    const collectionRef = collection(dbm, `${userData.email}`);
+
+    const gettingData = onSnapshot(collectionRef, (snapshot) => {
+      setData([]);
+      snapshot.docs.map((doc) => {
+        if (snapshot.size === 0) {
+          setShowTable({ user: "NOTSHOW" });
+        } else {
+          setShowTable({ user: "SHOW" });
+          setData((prevData) => [...prevData, doc.data()]);
+        }
+      });
+    });
+  };
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user"));
-
-    setLocalStorageData(userData);
-    // const dataArray = [];
-
-    const fetchData = async () => {
-      // setData([])
-      const dbm = getFirestore();
-      const collectionRef = collection(dbm, `${userData.email}`);
-
-      const gettingData = onSnapshot(collectionRef, (snapshot) => {
-        snapshot.docs.map((doc) => {
-          console.log("🧨🎉", doc.data());
-          console.log("🎈🎈", doc.data());
-          if (snapshot.size === 0) {
-            setShowTable({ user: "NOTSHOW" });
-          } else {
-            setShowTable({ user: "SHOW" });
-            const CODE_VAL = doc.data().code;
-            const FULL_URL = doc.data().originalURL;
-            const DATE = doc.data().date;
-            const ID = doc.data().id;
-            setData((prevData) => [...prevData, doc.data()]);
-          }
-        });
-        // setData(doc.data());
-        console.log("lolo", data);
-      });
-    };
     try {
       if (userData.isLoggedIn) {
         fetchData();
       }
     } catch {
+      console.log("wow");
       setShowTable({ user: "NOTSHOW" });
     }
   }, []);
@@ -95,9 +82,9 @@ export default function App() {
           className={styles.TableBody}
         >
           {(item) => (
-            <Table.Row textValue="" key={item.id}>
+            <Table.Row textValue="" key={item.code}>
               <Table.Cell
-                key={item.id}
+                key={item.code}
                 css={{ padding: "1em 2.5em" }}
                 className={styles.TableCell}
               >
@@ -111,7 +98,7 @@ export default function App() {
               </Table.Cell>
 
               <Table.Cell
-                key={item.id}
+                key={item.code}
                 css={{ padding: "1em 2.5em" }}
                 className={styles.TableCell}
               >
@@ -136,7 +123,7 @@ export default function App() {
               </Table.Cell>
 
               <Table.Cell
-                key={item.id}
+                key={item.code}
                 css={{ padding: "1em 2.5em" }}
                 className={styles.TableCell}
               >
@@ -156,7 +143,7 @@ export default function App() {
                   <Col>
                     <IconButton
                       key={item.code}
-                      onClick={() => console.log("View user", item.id)}
+                      onClick={() => console.log("View user", item.code)}
                     >
                       <Image
                         src={"/qr.svg"}
@@ -170,23 +157,38 @@ export default function App() {
                     <IconButton
                       onClick={() => {
                         const dbm = getFirestore();
+                        const userData = JSON.parse(
+                          localStorage.getItem("user")
+                        );
 
-                        const docRef = doc(
+                        const docRef1 = doc(dbm, userData.email, item.code);
+                        const docRef_2 = doc(
                           dbm,
-                          localStorageData.email,
+                          "accumulated-data",
                           item.code
                         );
 
-                        deleteDoc(docRef)
-                          .then(() => {
-                            console.log(
-                              "Document successfully deleted!",
-                              item.code
-                            );
-                          })
-                          .catch(() => {
-                            console.log(" 🧨🧨🧨 ");
-                          });
+                        deleteDoc(docRef1).then(() => {
+                          console.log(
+                            "Document successfully deleted!",
+                            item.code
+                          );
+
+                          fetchData()
+                            .then(() => {
+                              console.log("fetch completed!");
+                            })
+                            .catch((error) => {
+                              console.log("fetch didnt happen!", error);
+                            });
+                        });
+
+                        deleteDoc(docRef_2).then(() => {
+                          console.log(
+                            "Document successfully deleted! from accumulated-data",
+                            item.code
+                          );
+                        });
                       }}
                     >
                       <DeleteIcon size={20} fill="#FF0080" />
@@ -198,11 +200,6 @@ export default function App() {
           )}
         </Table.Body>
       </Table>
-      {/* <p>
-        {Object.keys(data).map((key) => (
-          <p key={key}>{`${key}: ${data[key]}`}</p>
-        ))}
-      </p> */}
     </section>
   ) : (
     <></>
