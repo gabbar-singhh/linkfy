@@ -106,7 +106,7 @@ export default function App() {
                   <Col
                     onClick={() =>
                       navigator.clipboard.writeText(
-                        `linkfy.web.app/${item.code}`
+                        `linkfy.vercel.app/${item.code}`
                       )
                     }
                   >
@@ -116,7 +116,7 @@ export default function App() {
                     <Row>
                       <Text
                         className={styles.ShortenedUrl}
-                      >{`linkfy.web.app/${item.code}`}</Text>
+                      >{`linkfy.vercel.app/${item.code}`}</Text>
                     </Row>
                   </Col>
                 </Tooltip>
