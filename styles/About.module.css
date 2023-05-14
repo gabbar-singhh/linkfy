@@ -1,0 +1,30 @@
+.Main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 4em 0;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+}
+
+.Main h2 {
+    margin-bottom: 1em;
+}
+
+.Main .Content {
+    font-size: 1.3em;
+    line-height: 1.5;
+    width: 70%;
+}
+
+.Main .Content p {
+    margin-bottom: 0.5em;
+}
+
+.Main .Content p span {
+    cursor: pointer;
+    border-bottom: 3px solid rgb(63 156 243);
+
+}

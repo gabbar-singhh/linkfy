@@ -128,12 +128,6 @@ const DashboardNav = () => {
                   {userData.email}
                 </Text>
               </Dropdown.Item>
-              <Dropdown.Item textValue="" key="user_profile" withDivider>
-                Profile
-              </Dropdown.Item>
-              <Dropdown.Item textValue="" key="help_and_feedback">
-                Help & Feedback
-              </Dropdown.Item>
               <Dropdown.Item textValue="" key="logout" color="error">
                 Log Out
               </Dropdown.Item>

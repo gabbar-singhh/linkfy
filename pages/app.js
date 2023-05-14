@@ -4,10 +4,10 @@ import { db } from "@/firebase";
 import { doc, setDoc } from "firebase/firestore/lite";
 import { collection, onSnapshot, getFirestore } from "firebase/firestore";
 import generateCode from "@/utility/generateCode";
-import { v4 as uuidv4 } from "uuid";
 import { Tooltip, Loading } from "@nextui-org/react";
 import Image from "next/image";
 import Table from "@/components/Table/Table";
+import Head from "next/head";
 import dateFormat from "dateformat";
 import DashboardNav from "@/components/DashboardNav";
 
@@ -21,7 +21,6 @@ const app = () => {
   // WHEN USER WILL CLIKC ON SEARCH-BTN
   const submitformhandler = async (e) => {
     const timestamp = new Date();
-    const docsRandom = uuidv4();
 
     const userData = JSON.parse(localStorage.getItem("user"));
     const CODE = generateCode();
@@ -70,11 +69,14 @@ const app = () => {
   useEffect(() => {
     try {
       const userData = JSON.parse(localStorage.getItem("users"));
-    } catch { }
+    } catch {}
   }, []);
 
   return (
     <>
+      <Head>
+        <title>LINKFY APP </title>
+      </Head>
       <DashboardNav />
       <section className={styles.Main}>
         <form action="" onSubmit={submitformhandler} className={styles.Form}>

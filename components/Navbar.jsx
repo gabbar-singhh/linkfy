@@ -24,13 +24,13 @@ const Navbar = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-        console.log("done :? you are signed in :D", result);
+        // console.log("done :? you are signed in :D", result);
 
-        console.log("👉 credential", credential);
-        console.log("👉 token", token);
-        console.log("👉 displayName", user.displayName);
-        console.log("👉 email", user.email);
-        console.log("👉 pic-url", user.photoURL);
+        // console.log("👉 credential", credential);
+        // console.log("👉 token", token);
+        // console.log("👉 displayName", user.displayName);
+        // console.log("👉 email", user.email);
+        // console.log("👉 pic-url", user.photoURL);
 
         // user details be saved
         setUserData({
@@ -128,7 +128,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link className={`${styles.ItemLi} highlightEff`} href={"/"}>
+            <Link className={`${styles.ItemLi} highlightEff`} href={"/contact"}>
               Contact Us
             </Link>
           </li>
@@ -160,12 +160,6 @@ const Navbar = () => {
                 <Text b color="inherit" css={{ d: "flex" }}>
                   {userData.email}
                 </Text>
-              </Dropdown.Item>
-              <Dropdown.Item textValue="" key="user_profile" withDivider>
-                Profile
-              </Dropdown.Item>
-              <Dropdown.Item textValue="" key="help_and_feedback">
-                Help & Feedback
               </Dropdown.Item>
               <Dropdown.Item textValue="" key="logout" color="error">
                 Log Out
