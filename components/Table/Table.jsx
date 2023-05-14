@@ -3,9 +3,8 @@ import { formatDistanceToNowStrict } from "date-fns";
 import Image from "next/image";
 import { db } from "@/firebase";
 import React, { useState, useEffect } from "react";
-import { getDocs } from "firebase/firestore/lite";
 import { doc, onSnapshot, collection, getFirestore } from "firebase/firestore";
-import { Table, Tooltip, Text, Col, Row } from "@nextui-org/react";
+import { Table, Text, Col, Row } from "@nextui-org/react";
 import { DeleteIcon } from "./DeleteIcon";
 import { IconButton } from "./IconButton";
 
@@ -13,28 +12,16 @@ export default function App() {
   const [data, setData] = useState([]);
   const [showTable, setShowTable] = useState({ user: "NOTSHOW" });
 
-  const columns = [
-    { name: "FULL URL", uid: "full_url" },
-    { name: "SHORTENED URL", uid: "shortened_url" },
-    { name: "TIME", uid: "date" },
-    { name: "ACTIONS", uid: "actions" },
-  ];
-
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user"));
 
     const fetchData = async () => {
-      const dataArray = [];
       const dbm = getFirestore();
       const collectionRef = collection(dbm, `${userData.email}`);
 
-      const data = onSnapshot(collectionRef, (snapshot) => {
+      const gettingData = onSnapshot(collectionRef, (snapshot) => {
         snapshot.docs.map((doc) => {
           console.log("🎈🎈", doc.data());
-        });
-
-        snapshot.forEach((doc) => {
-          // console.log(doc.data())
           if (snapshot.size === 0) {
             setShowTable({ user: "NOTSHOW" });
           } else {
@@ -42,35 +29,13 @@ export default function App() {
             const CODE_VAL = doc.data().code;
             const FULL_URL = doc.data().originalURL;
             const DATE = doc.data().date;
+            const ID = doc.data().id;
 
-            // console.log("🔫", doc.data());
-            // dataArray.push(doc.data())
-
-            dataArray.push({
-              id: CODE_VAL,
-              code: CODE_VAL,
-              originalURL: FULL_URL,
-              date: DATE,
-            });
-
-
-            // dataArray.forEach((prevData) => {
-            //   if (!prevData.code === CODE_VAL) {
-            //     dataArray.push({
-            //       id: CODE_VAL,
-            //       code: CODE_VAL,
-            //       originalURL: FULL_URL,
-            //       date: DATE,
-            //     });
-            //   }
-            // });
+            setData((prevData) => [prevData, doc.data()]);
           }
         });
-        // setData(dataArray.push(snapshot.docs))
-        setData(dataArray);
+        console.log("lolo", data);
       });
-      // setData([])
-      // dataArray.push({})
     };
     try {
       if (userData.isLoggedIn) {
@@ -80,6 +45,13 @@ export default function App() {
       setShowTable({ user: "NOTSHOW" });
     }
   }, []);
+
+  const columns = [
+    { name: "FULL URL", uid: "full_url" },
+    { name: "SHORTENED URL", uid: "shortened_url" },
+    { name: "TIME", uid: "date" },
+    { name: "ACTIONS", uid: "actions" },
+  ];
 
   const renderCell = (user, columnKey) => {
     const cellValue = user[columnKey];
@@ -171,10 +143,11 @@ export default function App() {
 
         <Table.Body items={data} className={styles.TableBody}>
           {(item) => (
-            <Table.Row textValue="" key={item.uid}>
+            <Table.Row textValue="">
+              {/* key={item.id} */}
               {(columnKey) => (
                 <Table.Cell
-                  key={item}
+                  key={item.id}
                   css={{ padding: "1em 2.5em" }}
                   className={styles.TableCell}
                 >
