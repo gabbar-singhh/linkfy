@@ -32,7 +32,8 @@ const app = () => {
 
     try {
       const collectionRef = collection(dbm, `${userData.email}`);
-      onSnapshot(collectionRef, (snapshot) => {
+      const accColRef = collection(dbm, "accumulated-data");
+      onSnapshot(accColRef, (snapshot) => {
         setDoc(doc(db, userData.email, docsRandom), {
           id: snapshot.size,
           originalURL: url,
@@ -40,7 +41,6 @@ const app = () => {
           date: dateFormat(timestamp, "isoDateTime"),
         });
       });
-      const accColRef = collection(dbm, "accumulated-data");
       onSnapshot(accColRef, (snapshot) => {
         setDoc(doc(db, "accumulated-data", CODE), {
           originalURL: url,

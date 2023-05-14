@@ -141,10 +141,12 @@ export default function App() {
         </Table.Header>
 
         <Table.Body
-          items={data.filter(
-            (item, index, self) =>
-              index === self.findIndex((t) => t.code === item.code)
-          ).sort((a, b) => b.id - a.id)}
+          items={data
+            .filter(
+              (item, index, self) =>
+                index === self.findIndex((t) => t.code === item.code)
+            )
+            .sort((a, b) => new Date(b.date) - new Date(a.date))}
           className={styles.TableBody}
         >
           {(item) => (

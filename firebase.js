@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyCI8tuIfGHiD6-5xgKArvLXbQ2FC9pfx-k",
   authDomain: "linkify-8869d.firebaseapp.com",
