@@ -1,18 +1,18 @@
-import { Table, Row, Col, Tooltip, Text } from "@nextui-org/react";
-import { IconButton } from "./IconButton";
-import { DeleteIcon } from "./DeleteIcon";
 import styles from "./Table.module.css";
 import { formatDistanceToNowStrict } from "date-fns";
 import Image from "next/image";
-import { getDocs } from "firebase/firestore/lite";
-import { doc, onSnapshot, collection, getFirestore } from "firebase/firestore";
 import { db } from "@/firebase";
 import React, { useState, useEffect } from "react";
-import filterUniqueByCode from "@/utility/removeDuplicates";
+import { getDocs } from "firebase/firestore/lite";
+import { doc, onSnapshot, collection, getFirestore } from "firebase/firestore";
+import { Table, Tooltip, Text, Col, Row } from "@nextui-org/react";
+import { DeleteIcon } from "./DeleteIcon";
+import { IconButton } from "./IconButton";
 
 export default function App() {
   const [data, setData] = useState([]);
   const [showTable, setShowTable] = useState({ user: "NOTSHOW" });
+
   const columns = [
     { name: "FULL URL", uid: "full_url" },
     { name: "SHORTENED URL", uid: "shortened_url" },
@@ -25,14 +25,16 @@ export default function App() {
 
     const fetchData = async () => {
       const dataArray = [];
-      dataArray.push([]);
       const dbm = getFirestore();
       const collectionRef = collection(dbm, `${userData.email}`);
 
       const data = onSnapshot(collectionRef, (snapshot) => {
-        console.log("🔒🔒", snapshot.docs);
+        snapshot.docs.map((doc) => {
+          console.log("🎈🎈", doc.data());
+        });
 
         snapshot.forEach((doc) => {
+          // console.log(doc.data())
           if (snapshot.size === 0) {
             setShowTable({ user: "NOTSHOW" });
           } else {
@@ -40,17 +42,36 @@ export default function App() {
             const CODE_VAL = doc.data().code;
             const FULL_URL = doc.data().originalURL;
             const DATE = doc.data().date;
-            const ID = doc.data().id;
 
-            dataArray.push(doc.data());
+            // console.log("🔫", doc.data());
+            // dataArray.push(doc.data())
 
-            console.log("🎮", dataArray);
+            dataArray.push({
+              id: CODE_VAL,
+              code: CODE_VAL,
+              originalURL: FULL_URL,
+              date: DATE,
+            });
+
+
+            // dataArray.forEach((prevData) => {
+            //   if (!prevData.code === CODE_VAL) {
+            //     dataArray.push({
+            //       id: CODE_VAL,
+            //       code: CODE_VAL,
+            //       originalURL: FULL_URL,
+            //       date: DATE,
+            //     });
+            //   }
+            // });
           }
         });
+        // setData(dataArray.push(snapshot.docs))
+        setData(dataArray);
       });
-      setData(dataArray);
+      // setData([])
+      // dataArray.push({})
     };
-
     try {
       if (userData.isLoggedIn) {
         fetchData();
@@ -76,22 +97,20 @@ export default function App() {
 
       case "shortened_url":
         return (
-          <Tooltip content="Click to copy">
-            <Col
-              onClick={() =>
-                navigator.clipboard.writeText(`linkfy.web.app/${user.code}`)
-              }
-            >
-              <Row>
-                <Text>{cellValue}</Text>
-              </Row>
-              <Row>
-                <Text
-                  className={styles.ShortenedUrl}
-                >{`linkfy.web.app/${user.code}`}</Text>
-              </Row>
-            </Col>
-          </Tooltip>
+          <Col
+            onClick={() =>
+              navigator.clipboard.writeText(`linkfy.web.app/${user.code}`)
+            }
+          >
+            <Row>
+              <Text>{cellValue}</Text>
+            </Row>
+            <Row>
+              <Text
+                className={styles.ShortenedUrl}
+              >{`linkfy.web.app/${user.code}`}</Text>
+            </Row>
+          </Col>
         );
 
       case "date":
@@ -155,7 +174,7 @@ export default function App() {
             <Table.Row textValue="" key={item.uid}>
               {(columnKey) => (
                 <Table.Cell
-                  // key={item}
+                  key={item}
                   css={{ padding: "1em 2.5em" }}
                   className={styles.TableCell}
                 >

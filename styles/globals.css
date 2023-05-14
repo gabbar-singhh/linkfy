@@ -111,7 +111,7 @@ body::-webkit-scrollbar-thumb {
   top: -50%;
   bottom: -50%;
   width: 1.25em;
-  transform: translate3d(-670%, 0, 0) rotate(35deg);
+  transform: translate3d(-820%, 0, 0) rotate(35deg);
 }
 
 .shineEff:hover::after {

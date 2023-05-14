@@ -85,9 +85,9 @@ export default function Home() {
       <working className={styles.Working}>
         <ul className={styles.BenefitList}>
           <h2>WHY LINKFY?</h2>
-          <li>👉 Shorten any URL with just a click</li>
           <li>👉 Clean, Easy and Fast experience</li>
           <li>👉 Improve SEO by using clean and concise links</li>
+          <li>👉 Built in QR Code for the URLs</li>
         </ul>
         <img
           src="/linkfy-video.gif"
