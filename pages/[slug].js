@@ -12,12 +12,12 @@ const slug = () => {
     const userData = JSON.parse(localStorage.getItem("user"));
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, userData.email));
+        const querySnapshot = await getDocs(collection(db, "all-urls-list"));
 
         const dataArray = [];
         querySnapshot.forEach((doc) => {
           const CODE_VAL = doc.data().code;
-          const FULL_URL = doc.data().originalURL;
+          const FULL_URL = doc.data().url;
 
           if (slug === CODE_VAL) {
             console.log("Redirecting Soon✅", slug);
@@ -27,7 +27,7 @@ const slug = () => {
         });
         setData(dataArray);
       } catch {
-        const querySnapshot = await getDocs(collection(db, "other-links"));
+        const querySnapshot = await getDocs(collection(db, "accumulated-data"));
         const dataArray = [];
         querySnapshot.forEach((doc) => {
           const CODE_VAL = doc.data().code;

@@ -28,8 +28,6 @@ const app = () => {
 
     const dbm = getFirestore();
 
-    // console.log("🗡", userCollectionSize());
-
     setShowLoading(true);
 
     try {
@@ -42,14 +40,19 @@ const app = () => {
           date: dateFormat(timestamp, "isoDateTime"),
         });
       });
-    } catch {
-      const collectionRef = collection(dbm, `other-links`);
-      onSnapshot(collectionRef, (snapshot) => {
-        setDoc(doc(db, "other-links", docsRandom), {
-          id: snapshot.size,
+      const accColRef = collection(dbm, "accumulated-data");
+      onSnapshot(accColRef, (snapshot) => {
+        setDoc(doc(db, "accumulated-data", CODE), {
           originalURL: url,
           code: CODE,
-          date: dateFormat(timestamp, "isoDateTime"),
+        });
+      });
+    } catch {
+      const collectionRef = collection(dbm, "accumulated-data");
+      onSnapshot(collectionRef, (snapshot) => {
+        setDoc(doc(db, "accumulated-data", CODE), {
+          originalURL: url,
+          code: CODE,
         });
       });
     }
