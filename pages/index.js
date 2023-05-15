@@ -9,11 +9,11 @@ export default function Home() {
     "https://avatars.githubusercontent.com/u/110885026?v=4";
 
   const openTwitter = () => {
-    window.open("https://twitter.com/garadiya0", "_target");
+    window.open("linkfy.vercel.app/SG7MU", "_target");
   };
 
   const openInsta = () => {
-    window.open("https://www.instagram.com/codexhimanshu/", "_target");
+    window.open("linkfy.vercel.app/UHI54", "_target");
   };
 
   return (
