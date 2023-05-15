@@ -85,6 +85,8 @@ const DashboardNav = () => {
         .catch((error) => {
           // An error happened.
         });
+    } else if (keyVal === "home") {
+      window.location.replace("https://linkfy.vercel.app/");
     }
   };
 
@@ -127,6 +129,9 @@ const DashboardNav = () => {
                 <Text b color="inherit" css={{ d: "flex" }}>
                   {userData.email}
                 </Text>
+              </Dropdown.Item>
+              <Dropdown.Item textValue="" key="home">
+                Home
               </Dropdown.Item>
               <Dropdown.Item textValue="" key="logout" color="error">
                 Log Out

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Home() {
   const openTwitter = () => {
-    window.open("https://linkfy.vercel.app/SG7MU", "_target");
+    window.open("http://linkfy.vercel.app/AEKX9", "_target");
   };
 
   const openInsta = () => {
