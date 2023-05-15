@@ -57,7 +57,6 @@
 
 .ShotenedLink {
     color: #232323;
-    background-color: #151718;
     background-color: #101010;
     padding: 0.4em 1.5em;
     border-radius: 0.2em;
@@ -93,4 +92,76 @@
 
 .TableSection {
     margin-top: 11em
+}
+
+/* MEDIA QUERIES */
+/* AVERAGE MOBILE DEVICES  */
+@media screen and (min-width: 360px) and (max-width: 480px) {
+    .Main {
+        margin: 10em 3em 0 3em;
+        gap: 2em;
+    }
+
+    .Form .InputUrl {
+        font-size: 1.1em;
+        padding: 0.8em 0.5em;
+    }
+
+    .ShotenedLink {
+        gap: 3em;
+        padding: 0.3em 1em;
+    }
+
+    .ShotenedLink span {
+        white-space: nowrap;
+    }
+
+}
+
+/* IPADS AND TABLETS  */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+    .Main {
+        margin: 10em 3em 0 3em;
+        gap: 2em;
+    }
+
+    .Form .InputUrl {
+        font-size: 1.5em;
+        padding: 0.5em 1em;
+    }
+
+    .ShotenedLink {
+        gap: 10em;
+        padding: 0.4em 1em;
+    }
+
+    .ShotenedLink span {
+        white-space: nowrap;
+    }
+
+}
+
+/* SMALL SCREEN */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .Main {
+        margin: 10em 3em 0 3em;
+        gap: 2em;
+    }
+}
+
+/* DESKTOP AND LARGE SCREEN */
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+    .Main {
+        margin: 10em 3em 0 3em;
+        gap: 2em;
+    }
+}
+
+/* EXTRA LARGE SCREENS & TV */
+@media screen and (min-width: 1201px) {
+    .Main {
+        margin: 10em 3em 0 3em;
+        gap: 2em;
+    }
 }

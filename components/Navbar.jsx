@@ -24,13 +24,6 @@ const Navbar = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-        // console.log("done :? you are signed in :D", result);
-
-        // console.log("👉 credential", credential);
-        // console.log("👉 token", token);
-        // console.log("👉 displayName", user.displayName);
-        // console.log("👉 email", user.email);
-        // console.log("👉 pic-url", user.photoURL);
 
         // user details be saved
         setUserData({
@@ -87,6 +80,8 @@ const Navbar = () => {
         .catch((error) => {
           // An error happened.
         });
+    } else if (keyVal === "home") {
+      window.location.replace("https://linkfy.vercel.app/");
     }
   };
 
@@ -160,6 +155,9 @@ const Navbar = () => {
                 <Text b color="inherit" css={{ d: "flex" }}>
                   {userData.email}
                 </Text>
+              </Dropdown.Item>
+              <Dropdown.Item textValue="" key="home">
+                Home
               </Dropdown.Item>
               <Dropdown.Item textValue="" key="logout" color="error">
                 Log Out

@@ -62,7 +62,7 @@ export default function App() {
             FULL URL
           </Table.Column>
           <Table.Column className={styles.ColumnHead} key="shortened_url">
-            SHORTENED UEL
+            SHORTENED URL
           </Table.Column>
           <Table.Column className={styles.ColumnHead} key="date">
             TIME

@@ -98,7 +98,12 @@ export default function Home() {
       <developer className={styles.Developer}>
         <h2 className={styles.DevTxt}>FOLLOW THE DEV!</h2>
         <div className={styles.ImgBox}>
-          <img src={"/profile-pic.webp"} width={250} height={250} alt="" />
+          <img
+            src={"/profile-pic.webp"}
+            width={250}
+            height={250}
+            alt="developer's picture"
+          />
         </div>
         <div className={styles.SelfPromo}>
           17 y/o — Self Taught Web Developer and Designer 👨‍💻
