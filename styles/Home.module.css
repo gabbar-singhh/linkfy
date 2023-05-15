@@ -54,7 +54,8 @@
     color: #232323;
     font-size: 1.2em;
     font-weight: 600;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .Introsection .RightsideSection .Text {
@@ -134,11 +135,11 @@
 }
 
 .Developer .Button .TwitterBtn {
-    background-color: #1D9BF0;
+    background-color: #1d9bf0;
 }
 
 .Developer .Button .InstaBtn {
-    background-color: #E1306C;
+    background-color: #e1306c;
 }
 
 .Developer .Button .TwitterBtn:hover {
@@ -165,4 +166,216 @@
     -webkit-backdrop-filter: blur(4.5px);
     border-top: 1px solid #aa1846;
     cursor: default;
+}
+
+/* MEDIA QUERIES */
+/* AVERAGE MOBILE DEVICES  */
+@media screen and (min-width: 360px) and (max-width: 480px) {
+    .Herosection {
+        margin: 0 1em;
+        justify-content: center;
+        flex-direction: column;
+        padding: 5em 0;
+        gap: 3em;
+    }
+
+    .Herosection .LeftsideSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+    }
+
+    .Herosection .LeftsideSection .Heading {
+        font-size: 4em;
+    }
+
+    .Herosection .LeftsideSection .Desc {
+        text-align: center;
+    }
+
+    .Introsection {
+        margin: 0;
+        padding: 5em 0;
+        flex-direction: column;
+        gap: 3em;
+    }
+
+    .Introsection .LeftsideSection {
+        flex-direction: column;
+        gap: 3em;
+    }
+
+    .Introsection .RightsideSection {
+        align-items: center;
+        justify-content: center;
+        gap: 3em;
+    }
+
+    .Introsection .RightsideSection .Text {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .Working {
+        flex-direction: column;
+        gap: 3em;
+        margin: 0 1.2em;
+        padding: 7em 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Working img {
+        display: none;
+        width: 350px;
+        height: auto;
+    }
+
+    .Developer {
+        padding: 7em 1em;
+        margin: 0;
+    }
+
+    .Developer .SelfPromo {
+        text-align: center;
+    }
+
+    .Developer .Button {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+}
+
+/* IPADS AND TABLETS  */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .Herosection {
+        margin: 0;
+        justify-content: center;
+        flex-direction: column;
+        padding: 5em 0;
+        gap: 3em;
+    }
+
+    .Herosection .LeftsideSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+    }
+
+    .Herosection .LeftsideSection .Heading {
+        font-size: 4em;
+    }
+
+    .Herosection .LeftsideSection .Desc {
+        text-align: center;
+    }
+
+    .Introsection {
+        margin: 0;
+        padding: 5em 0;
+        flex-direction: column;
+        gap: 3em;
+    }
+
+    .Introsection .LeftsideSection {
+        flex-direction: column;
+        gap: 3em;
+    }
+
+    .Introsection .RightsideSection {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Introsection .RightsideSection .Text {
+        text-align: center;
+    }
+
+    .Working {
+        flex-direction: column;
+        gap: 3em;
+        padding: 5em 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Working img {
+        width: 430px;
+        height: auto;
+    }
+
+    .Developer {
+        padding: 5em 1em;
+        margin: 0;
+    }
+
+    .Developer .SelfPromo {
+        text-align: center;
+    }
+
+    .Developer .Button {
+        display: flex;
+        gap: 1em;
+    }
+}
+
+/* SMALL SCREEN */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .Herosection {
+        margin: 0;
+        margin-left: 3em;
+        justify-content: center;
+        padding: 7em 0;
+        gap: 0em;
+    }
+
+    .Herosection .LeftsideSection .Heading {
+        font-size: 4em;
+    }
+
+    .Herosection .RightsideSection .Desc {
+        font-size: 1em;
+    }
+
+    .Introsection {
+        margin: 0;
+        padding: 7em 0;
+        flex-direction: column;
+        gap: 3em;
+    }
+
+    .Introsection .RightsideSection {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Working {
+        flex-direction: column;
+        gap: 5em;
+        padding: 7em 0;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* DESKTOP AND LARGE SCREEN */
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+    .Herosection {
+        justify-content: center;
+    }
+
+    .Working {
+        flex-direction: column;
+        gap: 5em;
+        padding: 7em 0;
+        align-items: center;
+        justify-content: center;
+    }
 }

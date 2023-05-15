@@ -59,3 +59,44 @@
     transition: all 600s ease-in-out;
     background-color: hsl(341deg 100% 66.18% / 75%);
 }
+
+/* CSS MEDIA QUERIES */
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .HeaderSection {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .HeaderSection .LeftSideSection {
+        display: none;
+    }
+
+    .MiddleSideSection ul {
+        gap: 1.2em;
+    }
+}
+
+@media screen and (min-width: 360px) and (max-width: 480px) {
+
+    .HeaderSection {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .HeaderSection .LeftSideSection {
+        display: none;
+    }
+
+    .MiddleSideSection ul {
+        font-size: 0.8em;
+        gap: 1.2em;
+    }
+
+    .RightSideSection .SignInBtn {
+        font-size: 0.8em;
+    }
+
+}

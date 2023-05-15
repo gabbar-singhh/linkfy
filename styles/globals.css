@@ -142,3 +142,19 @@ body::-webkit-scrollbar-thumb {
   transform: scaleX(1);
   transform-origin: center left;
 }
+
+/* MEDIA QUERIES */
+/* AVERAGE MOBILE DEVICES  */
+@media screen and (min-width: 360px) and (max-width: 480px) {}
+
+/* IPADS AND TABLETS  */
+@media screen and (min-width: 481px) and (max-width: 768px) {}
+
+/* SMALL SCREEN */
+@media screen and (min-width: 769px) and (max-width: 1024px) {}
+
+/* DESKTOP AND LARGE SCREEN */
+@media screen and (min-width: 1025px) and (max-width: 1200px) {}
+
+/* EXTRA LARGE SCREENS & TV */
+@media screen and (min-width: 1201px) {}

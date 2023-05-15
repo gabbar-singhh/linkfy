@@ -5,15 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
-  const GITHUB_PROFILE_PIC =
-    "https://avatars.githubusercontent.com/u/110885026?v=4";
-
   const openTwitter = () => {
-    window.open("linkfy.vercel.app/SG7MU", "_target");
+    window.open("https://linkfy.vercel.app/SG7MU", "_target");
   };
 
   const openInsta = () => {
-    window.open("linkfy.vercel.app/UHI54", "_target");
+    window.open("https://linkfy.vercel.app/UHI54", "_target");
   };
 
   return (
@@ -99,7 +96,7 @@ export default function Home() {
       </working>
 
       <developer className={styles.Developer}>
-        <h2 className={styles.DevTxt}>FOLLOW YOUR DEV!</h2>
+        <h2 className={styles.DevTxt}>FOLLOW THE DEV!</h2>
         <div className={styles.ImgBox}>
           <img src={"/profile-pic.webp"} width={250} height={250} alt="" />
         </div>
