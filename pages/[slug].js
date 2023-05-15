@@ -15,7 +15,7 @@ const slug = () => {
         console.log("🎃", doc.data().originalURL);
 
         if (doc.id == slug) {
-          console.log("Redirecting Soon✅", slug);
+          console.log("Redirecting Soon✅", doc.data().originalURL);
           window.location.replace(doc.data().originalURL);
         }
       });

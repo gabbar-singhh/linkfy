@@ -63,7 +63,7 @@ const app = () => {
 
   // CLICK-TO-COPY
   const copyToClipboardBtnHandler = () => {
-    navigator.clipboard.writeText(`linkfy.vercel.app/${linkTxtCode}`);
+    navigator.clipboard.writeText(`https://linkfy.vercel.app/${linkTxtCode}`);
   };
 
   useEffect(() => {
