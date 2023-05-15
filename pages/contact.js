@@ -9,7 +9,18 @@ export default function ContactForm() {
         <title> Contact Us</title>
       </Head>
       <Navbar />
-      <section></section>
+      <section style={{ margin: "1em 2em" }}>
+        If you found any Bugs or have any suggestion regarding Linkfy.
+        <br />
+        <br />
+        Email me at: himanshup1308@gmail.com
+        <br />
+        <br />
+        Twitter: @garadiya0
+        <br />
+        <br />
+        Instagram: @codexhimanshu
+      </section>
     </>
   );
 }

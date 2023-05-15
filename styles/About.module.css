@@ -28,3 +28,14 @@
     border-bottom: 3px solid rgb(63 156 243);
 
 }
+
+@media screen and (min-width: 360px) and (max-width: 768px) {
+    .Main {
+        margin: 3em 0;
+        padding: 0;
+    }
+
+    .Main .Content {
+        width: 85%;
+    }
+}
