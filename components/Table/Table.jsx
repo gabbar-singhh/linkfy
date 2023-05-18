@@ -77,7 +77,7 @@ export default function App() {
       {/* QR-Code MODAL */}
       <Modal onClose={closeHandler} closeButton open={visible}>
         <Modal.Header>
-          <Text b size={20}>
+          <Text b size={20} color="error">
             SCAN THIS!
           </Text>
         </Modal.Header>
@@ -96,22 +96,6 @@ export default function App() {
             }}
           />
         </Modal.Body>
-        <Modal.Footer
-          css={{
-            d: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Button
-            icon
-            auto
-            color="error"
-            onPress={() => console.log("😓😓 You pressed download btn")}
-          >
-            Download
-          </Button>
-        </Modal.Footer>
       </Modal>
 
       <section className={styles.Main}>
