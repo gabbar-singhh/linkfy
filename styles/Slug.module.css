@@ -1,0 +1,18 @@
+.Main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 85vh;
+}
+
+.Main p:first-child {
+    font-size: 3em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.Main p:last-child {
+    text-align: center;
+    font-size: 1.2em;
+}
