@@ -3,6 +3,9 @@
 
 Linkfy allows you to create shortened URLs for clean sharing
 
+<br>
+<br>
+
 
 ## ⏭ Demo
 
@@ -37,6 +40,8 @@ Start the server
   npm run dev
 ```
 
+<br>
+<br>
 
 ## ⚒ Tech Stack & Node Modules Used
 
@@ -49,7 +54,8 @@ Start the server
 
 
 
-
+<br>
+<br>
 
 ## 🎁 Features
 
@@ -58,6 +64,8 @@ Start the server
 - Users can also sign up to save thier history of URLs
 - Improve SEO by using clean and concise links
 
+<br>
+<br>
 
 ## 📸 Screenshots
 
@@ -71,6 +79,9 @@ Start the server
 
 ![image](https://github.com/garadiya0/linkfy/assets/110885026/d8589fe7-20d7-4119-9d63-cc1d0f6bf0e8)
 
+
+<br>
+<br>
 
 ## 🧠 Lessons Learned
 
@@ -87,6 +98,11 @@ The project was built over the course of 10 consecutive days, as part of a #10Da
 - In the end, no matter how much brainstorming or planning you do, there will always be unforeseen changes and difficulties that you can't predict. And that's part of the fun!
 
 Happy Coding :)
+
+
+<br>
+<br>
+
 ## 🚀 About Me
 Hey! I'm Himanshu, a 17-year-old self-taught developer and designer building kickass products. 
 
@@ -95,10 +111,16 @@ I'm also open to new opportunities and collaborations 🌟
 Feel free to reach out to me at [@garadiya0](https://twitter.com/garadiya0) on twitter 😊🙌
 
 
+<br>
+<br>
+
 ## 🙋‍♂️ Authors
 
 - [garadiya0](https://www.github.com/garadiya0) 
 
+
+<br>
+<br>
 
 ## 🎈 Acknowledgements
 
@@ -111,8 +133,8 @@ Feel free to reach out to me at [@garadiya0](https://twitter.com/garadiya0) on t
  - [CSS FX](https://cssfx.netlify.app/) for simple & elegant effects.
  - [GLASSMORPHISM GENERATOR](https://hype4.academy/tools/glassmorphism-generator) by hype4academy
 
- 
-
+<br>
+<br>
 
 ## 💬 Feedback
 
