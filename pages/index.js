@@ -99,7 +99,7 @@ export default function Home() {
         <h2 className={styles.DevTxt}>FOLLOW THE DEV!</h2>
         <div className={styles.ImgBox}>
           <img
-            src={"/profile-pic.png"}
+            src={"/profile-pic.webp"}
             width={250}
             height={250}
             alt="developer's picture"
