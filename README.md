@@ -10,9 +10,7 @@ Live Preview: https://linkfy.vercel.app/
 
 Video Demo 👇
 
-
-
-
+![demo-video](https://github.com/garadiya0/linkfy/assets/110885026/41b622da-0b01-433d-a143-6a8849694ee9)
 ## 💻 Run Locally
 
 Clone the project
@@ -63,7 +61,15 @@ Start the server
 
 ## 📸 Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![image](https://github.com/garadiya0/linkfy/assets/110885026/76546479-0952-4a3a-8a40-cf90e86a09d1)
+
+![image](https://github.com/garadiya0/linkfy/assets/110885026/bf7cd62f-d1c2-4837-9675-dfbd97885a52)
+
+![image](https://github.com/garadiya0/linkfy/assets/110885026/2dc84fdf-7035-4278-8259-7da95cd57137)
+
+![image](https://github.com/garadiya0/linkfy/assets/110885026/dc8c7845-fa53-44e1-b0d3-767a76b7bfa7)
+
+![image](https://github.com/garadiya0/linkfy/assets/110885026/d8589fe7-20d7-4119-9d63-cc1d0f6bf0e8)
 
 
 ## 🧠 Lessons Learned
