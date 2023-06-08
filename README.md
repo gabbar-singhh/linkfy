@@ -69,7 +69,7 @@ Start the server
 
 ## 📸 Screenshots
 
-![image](https://github.com/garadiya0/linkfy/assets/110885026/76546479-0952-4a3a-8a40-cf90e86a09d1)
+![image](https://github.com/garadiya0/linkfy/assets/110885026/f48a7069-523b-4608-a1c2-b553382e4ae3)
 
 ![image](https://github.com/garadiya0/linkfy/assets/110885026/bf7cd62f-d1c2-4837-9675-dfbd97885a52)
 
