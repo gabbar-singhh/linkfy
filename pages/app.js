@@ -3,13 +3,13 @@ import styles from "@/styles/App.module.css";
 import { db } from "@/firebase";
 import { doc, setDoc } from "firebase/firestore/lite";
 import { collection, onSnapshot, getFirestore } from "firebase/firestore";
-import generateCode from "@/utility/generateCode";
+import generateCode from "@/utility/generateCode.js";
 import { Tooltip, Loading } from "@nextui-org/react";
 import Image from "next/image";
-import Table from "@/components/Table/Table";
+import Table from "@/components/Table/Table.jsx";
 import Head from "next/head";
 import dateFormat from "dateformat";
-import DashboardNav from "@/components/DashboardNav";
+import DashboardNav from "@/components/DashboardNav.jsx";
 
 const app = () => {
   const [url, setUrl] = useState("");

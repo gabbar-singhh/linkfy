@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@/styles/About.module.css";
-import Navbar from "components/Navbar.jsx";
+import Navbar from "@/components/Navbar.jsx";
 import Head from "next/head";
 
 const about = () => {

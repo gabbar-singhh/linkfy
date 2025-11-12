@@ -5,7 +5,7 @@ import { getDocs, collection } from "firebase/firestore/lite";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Slug.module.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar.jsx";
 import { Loading } from "@nextui-org/react";
 
 const slug = () => {
