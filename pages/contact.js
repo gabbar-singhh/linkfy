@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "components/Navbar.jsx";
+import Navbar from "@/components/Navbar.jsx";
 import Head from "next/head";
 import styles from "@/styles/About.module.css";
 
