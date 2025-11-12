@@ -10,17 +10,19 @@
 }
 
 .Main h2 {
+    font-size: 3.2rem;
     margin-bottom: 1em;
 }
 
 .Main .Content {
     font-size: 1.3em;
-    line-height: 1.5;
-    width: 70%;
+    line-height: 1.75;
+    width: 60%;
 }
 
 .Main .Content p {
     margin-bottom: 0.5em;
+    letter-spacing: -2%;
 }
 
 .Main .Content p span {

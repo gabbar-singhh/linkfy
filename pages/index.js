@@ -5,13 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
-  const openTwitter = () => {
-    window.open("http://linkfy.vercel.app/AEKX9", "_target");
-  };
-
-  const openInsta = () => {
-    window.open("https://linkfy.vercel.app/UHI54", "_target");
-  };
 
   return (
     <>
@@ -30,9 +23,12 @@ export default function Home() {
 
       <herosection className={styles.Herosection}>
         <div className={styles.LeftsideSection}>
-          <div className={styles.Heading}>LINKFY</div>
+          <div className={styles.Heading}>
+            Shorten Links.<br></br> Simplify Sharing.
+          </div>
           <div className={styles.Desc}>
-            Shorten your URLs for Clean and Easy Sharing 😎
+            Create short URLs, generate QR codes, and track basic analytics —
+            all in a clean, seamless interface powered by Next.js and Firebase.
           </div>
         </div>
         <div className={styles.RightsideSection}>
@@ -40,8 +36,8 @@ export default function Home() {
             src="/hero-img.webp"
             priority
             alt="bored uncle with a laptop"
-            width={350}
-            height={350}
+            width={420}
+            height={420}
           />
         </div>
       </herosection>
@@ -82,10 +78,10 @@ export default function Home() {
 
       <working className={styles.Working}>
         <ul className={styles.BenefitList}>
-          <h2>WHY LINKFY?</h2>
-          <li>👉 Clean, Easy and Fast experience</li>
-          <li>👉 Improve SEO by using clean and concise links</li>
-          <li>👉 Built in QR Code for the URLs</li>
+          <h2>why linkfy?</h2>
+          <li>👉 &nbsp;&nbsp;Clean, Easy and Fast experience</li>
+          <li>👉 &nbsp;&nbsp;Improve SEO by using clean and concise links</li>
+          <li>👉 &nbsp;&nbsp;Built in QR Code for the URLs</li>
         </ul>
         <img
           src="/linkfy-video.gif"
@@ -96,49 +92,33 @@ export default function Home() {
       </working>
 
       <developer className={styles.Developer}>
-        <h2 className={styles.DevTxt}>FOLLOW THE DEV!</h2>
+        <h2 className={styles.DevTxt}>
+          Built By Himanshu Pal <br></br> (Final Year BCA Student)
+        </h2>
         <div className={styles.ImgBox}>
           <img
-            src={"/profile-pic.webp"}
+            src={"/profile-pic.jpeg"}
             width={250}
             height={250}
             alt="developer's picture"
           />
         </div>
         <div className={styles.SelfPromo}>
-          17 y/o — Self Taught Web Developer and Designer 👨‍💻
+          Grateful to MIT World Peace University <br/> and Prof. Abhijeet Kokare for guiding and
+          supporting my Linkfy project.
         </div>
         <div className={styles.Button}>
-          <div
-            className={styles.TwitterBtn}
-            name="TwitterBtn"
-            onClick={openTwitter}
-          >
-            <span>Follow me on twitter! </span>
+          <Link className={styles.gmailBtn} name="" href={"emailto:himanshu.pal@mitwpu.edu.in"}>
+            <span>write me an email</span>
             <img
-              src="/twitter-icon.svg"
-              alt="twitter-icon"
-              height={35}
-              width={35}
-            />
-          </div>
-          <div className={styles.InstaBtn} name="InstaBtn" onClick={openInsta}>
-            <span>Follow me on insta! </span>
-            <img
-              src="/instagram-icon.svg"
+              src="/email.png"
               alt="insta-icon"
               height={35}
               width={35}
             />
-          </div>
+          </Link>
         </div>
       </developer>
-
-      <footer className={styles.Footer}>
-        MADE WITH{" "}
-        <img src="/heart.svg" height={17} width={17} alt="heart-icon" /> BY
-        HIMANSHU
-      </footer>
     </>
   );
 }

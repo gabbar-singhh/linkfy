@@ -24,34 +24,33 @@ const about = () => {
         <h2>Hello Folks! 👋</h2>
         <div className={styles.Content}>
           <p>
-            Hello there! I'm Himanshu, a young and enthusiastic 17-year-old web
-            developer and designer who is passionate about working in the tech
-            industry. Recently, I developed a web application called Linkfy,
-            which helps people shorten their long and messy URLs for clean and
-            easy sharing. The project was built over the course of 10
-            consecutive days, as part of a famous #10DayWebBuild challenge on
-            Twitter. I'm proud to say that my everyday progress was visible on
-            my Twitter feed at
-            <span onClick={openTwitterAcc}> @garadiya0 </span>, which helped me
-            stay accountable and motivated throughout the project.
+            Hello there! I’m Himanshu, a final-year BCA student who enjoys
+            building simple and useful web tools. Recently, I worked on my PBL
+            project under Prof. Abhijeet Kokare, and it took about three weeks
+            from idea to completion.
           </p>
           <p>
-            During the challenge, I learned a lot about web development and
-            gained a great deal of confidence in my skills. I'm happy to say
-            that I'm now a more skilled developer than I was before. My primary
-            tools for building the project were Next Js and Firebase, and I
-            found both to be extremely helpful in achieving my goals. As a young
-            developer, I'm constantly seeking opportunities to learn and grow,
-            and the <span onClick={openLink}> #10DayWebBuild</span> challenge
-            was an excellent way to do just that. I'm thrilled with the results
-            of the project and am eager to continue building my skills as a
-            developer.
+            The problem I wanted to solve was simple: long and messy URLs are
+            inconvenient to share. To address this, I built Linkfy, a tool that
+            quickly turns any long link into a short and clean one.
           </p>
           <p>
-            Overall, I'm proud of what I accomplished with Linkfy, and I hope
-            that it will help many people shorten their URLs and make sharing
-            content online a more enjoyable experience. Thank you for taking the
-            time to learn about my project! 😊🙌
+            Here’s how it works. You paste a long URL, click a button, and get a
+            shortened link instantly. Each user has their own login, so their
+            shortened URLs stay private and accessible only to them. There’s
+            also a one-tap copy option that makes sharing easy. The system
+            stores everything neatly in the background, keeping each user’s
+            links organised.
+          </p>
+          <p>
+            My motivation was to build something small, purposeful, and easy for
+            anyone to use. The project helped me improve my thinking, structure,
+            and ability to ship a complete product within a timeline.
+          </p>
+
+          <p>
+            Grateful to MIT-WPU and Prof. Kokare for the guidance and support
+            throughout the project.
           </p>
         </div>
       </section>
