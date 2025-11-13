@@ -75,10 +75,10 @@ export default function App() {
   return showTable.user === "SHOW" ? (
     <>
       {/* QR-Code MODAL */}
-      <Modal onClose={closeHandler} closeButton open={visible}>
+      <Modal onClose={closeHandler} closeButton open={visible} width="408px" >
         <Modal.Header>
-          <Text b size={20} color="error">
-            SCAN THIS!
+          <Text b size={32} color="error">
+            SCAN THIS
           </Text>
         </Modal.Header>
         <Modal.Body>
@@ -87,8 +87,8 @@ export default function App() {
             options={{
               level: "L",
               margin: 2,
-              scale: 4,
               width: 350,
+              scale: 4,
               color: {
                 dark: "#232323",
                 light: "#fff",
